@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="./FileSaver.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  
+  <video id="video" crossorigin="anonymous" autoplay controls preload="metadata">
+    <source src="https://res.cloudinary.com/alejotsv/video/upload/v1572146282/videoplayback_dznrfa.mp4" type="video/mp4" />
+    <track id="my-subs" label="English" kind="subtitles" srclang="en" src="" default/> 
+    
+  </video>
+  
+  <button id="save-btn">Save Text to File</button>
+  
+  
+  <script>    
+
+$("#save-btn").click(function() { 
+  // let subtitles = 'WEBVTT\n\n1\n00:00:03.000 --> 00:00:04.200\nThis is the first sub\n\n2\n00:00:04.300 --> 00:00:06.200\nThis is the second sub\n\n';
+  // console.log(subtitles);
+  // let blob = new Blob([subtitles], {type: "text/plain;charset=utf-8", endings:'native'}),
+  // url = URL.createObjectURL(blob);
+  // saveAs(blob, "subtitle.vtt");
+  // console.log(url);
+  
+  // document.getElementById('my-subs').setAttribute('href', url);
+  
+  // let vid = document.getElementById('video');
+  // let time = vid.currentTime;
+  // console.log(time);
+  
+  let track = document.getElementById('my-subs');
+  console.log(track);
+  let cue1 = new VTTCue(1.000,3.000, 'testing');
+  console.log(cue1);
+  let tracks = document.querySelector('video').textTracks;
+  console.log(tracks[0]);
+  tracks[0].addCue(cue1);
+  console.log(tracks[0]);
+
+  let cue2 = new VTTCue(3.200,5.000, 'this fucking works');
+  tracks[0].addCue(cue2);
+
+  // // First we get the subtitle list (called textTracks here) from the video tag
+  // let tracks = document.querySelector('video').textTracks;
+  // // Then create a VTT subtitle (cue) object that has a start time, end time, and the text
+  // let cue1 = new VTTCue(1.000,3.000, 'testing');
+  // // And we add it to the subtitle list
+  // tracks[0].addCue(cue1);
+  // // Wash, rinse, repeat
+  // let cue2 = new VTTCue(3.200,5.000, 'this fucking works');
+  // tracks[0].addCue(cue2);
+  
+  
+  
+
+  
+  
+  
+});
+
+// video.addEventListener("loadedmetadata", function() {
+//    track = document.createElement("track");
+//    track.kind = "captions";
+//    track.label = "English";
+//    track.srclang = "en";
+//    track.src = "captions/sintel-en.vtt";
+//    track.addEventListener("load", function() {
+//       this.mode = "showing";
+//       video.textTracks[0].mode = "showing"; // thanks Firefox
+//    });
+//    this.appendChild(track);
+//   });
+  
+  
+  
+  
+  </script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

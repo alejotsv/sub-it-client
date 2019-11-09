@@ -1,0 +1,97 @@
+/******************************************
+
+  CSS FOR PROJECT CARDS
+
+*****************************************/
+
+.card {
+  margin: 30px auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+
+  background-color: wheat;
+}
+
+.card .card_video {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_video video {
+  width: inherit;
+  height: inherit;
+  /* border-radius: 40px; */
+  /* object-fit: cover; */
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(1.2, 1.2);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+/******************************************
+
+  CSS FOR PROJECT LIST AND ITS CONTAINER
+
+*****************************************/
+
+.project-container ul {
+  border: 1px red solid;
+
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  
+
+  /* background-color: aqua; */
+
+  list-style: none;
+
+}
+
+.project-container ul li{
+  
+  margin: 0 12px;
+
+}
+
+.project-container  {
+
+  border: 1px blue solid;
+
+}
+
+/******************************************
+
+  CSS FOR PROJECT Detail Page
+
+*****************************************/
+
+#project-Being-Worked-On {
+  width: 50%;
+}

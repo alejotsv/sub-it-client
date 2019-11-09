@@ -1,0 +1,24 @@
+/************************************************
+
+NAVBAR STYLING
+
+*************************************************/
+
+nav{
+  background-color: dodgerblue;
+}
+
+.navList {
+
+  list-style-type: none;
+
+  display: flex;
+
+
+}
+
+.link {
+  text-decoration: none;
+
+  padding: 0 8px;
+}
