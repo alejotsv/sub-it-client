@@ -56,7 +56,8 @@ class Navbar extends Component {
        <div className="collapse navbar-collapse" id="navbarText">
         <ul className="navbar-nav mr-auto">
            <li className="nav-item active">
-           <Link to="/" className="nav-link"><span className = "nav_elements">IronTitles</span></Link>
+           <Link to="/" className="nav-link"><span className = "nav_elements">
+             IronTitles</span></Link>
           </li>
          </ul>
         <span className="navbar-text">{localStorage.usertoken ? userLink : loginRegLink}</span>
