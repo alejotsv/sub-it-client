@@ -1,10 +1,128 @@
+.App {
+  text-align: center;
+
+  }
+
+  #full_back{
+  background: #403B4A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #E7E9BB, #403B4A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #E7E9BB, #403B4A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+ul > li {
+    list-style-type: none;
+    }
+
+    .container_login, .container_register, .container_project, .container_profile{
+      margin-top: 10%;
+      
+    }
+  /* nav p {
+      color: #B4B4C4;
+      font-size: 22px;
+      margin-left: 30%;
+      font-weight: bold;
+      font-family: 'Raleway, "Open Sans", sans-serif';
+    } */
+  .nav_elements {  
+    color: #B4B4C4;
+    font-size: 20px;
+    margin-right: 30%;
+    font-family: 'Raleway, Open Sans, sans-serif';
+  }
+  .button_text{
+    color: #B4B4C4;
+    font-size: 25px;
+    font-family: 'Raleway, Open Sans, sans-serif';
+  }
+
+ .form_text {
+    font-weight: bold;
+    font: 16px Raleway, "Open Sans", sans-serif;
+    color: #32325D
+  }
+  .form_title_text{
+    font-weight: bold;
+    font: 25px Raleway, "Open Sans", sans-serif;
+    color: #32325D
+  }
+    
+#top_footer > h1{
+  color: #B4B4C4;
+  font: 28px Raleway, "Open Sans", sans-serif;
+  font-weight: bold;
+  }
+
+li {
+  float: left;
+}
+
+.card-text{
+  color: #B4B4C4;
+  font: 24px Raleway, "Open Sans", sans-serif;
+  font-weight: bold;
+}
+.card-body > h6{
+  color: #B4B4C4;
+  font: 18px Raleway, "Open Sans", sans-serif;
+  }
+#footer{
+  height: 40%;
+}
+#main{
+  margin-top: 100px;
+  background: #403B4A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #E7E9BB, #403B4A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #E7E9BB, #403B4A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+ }
+ #main_text{
+    font-weight: bold;
+    font: 50px Raleway, "Open Sans", sans-serif;
+    color: #32325D
+ }
+
+ #sub_text{
+  font: 18px Raleway, "Open Sans", sans-serif;
+  color: #32325D
+ }
+
+
+ .jumbotron.mt-5{
+  background: #403B4A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #E7E9BB, #403B4A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #E7E9BB, #403B4A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-color: transparent;
+  border-radius: 0%;
+
+ }
+ 
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
 /************************************************
 
 NAVBAR STYLING
 
 *************************************************/
 
-nav{
+/* nav{
   background-color: dodgerblue;
 }
 
@@ -21,4 +139,5 @@ nav{
   text-decoration: none;
 
   padding: 0 8px;
-}
+} */
+
