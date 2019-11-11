@@ -57,7 +57,7 @@ class Navbar extends Component {
         <ul className="navbar-nav mr-auto">
            <li className="nav-item active">
            <Link to="/" className="nav-link"><span className = "nav_elements">
-             IronTitles</span></Link>
+             <img className="logoIron" src="/2.png" alt="blah"/></span></Link>
           </li>
          </ul>
         <span className="navbar-text">{localStorage.usertoken ? userLink : loginRegLink}</span>

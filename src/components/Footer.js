@@ -32,6 +32,12 @@ function Footer() {
     </div>
   </div>
   </div>
+  <br/>
+  <br/>
+  <br/>
+  <footer>
+    Copyright © 2019.
+  </footer>
       </div>
       
     );

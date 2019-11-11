@@ -27,12 +27,13 @@ class ProjectsList extends Component {
   }
   
   renderingElements(){
+    const uId = localStorage.getItem('currentUserId');
     if(this.state.projects.length === 0){
       return (<div>
                  <h2>
                  What are you waiting for creating a project?
                 </h2>
-               <a href="/" className="btn btn-dark">Add a project</a>
+               <a href={`/Projectform/${uId}`} className="btn btn-dark">Add a project</a>
             </div>)
     }
     else{
