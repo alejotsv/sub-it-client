@@ -7,7 +7,12 @@ class SubtitleCreation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      subInit: false
+      subInit: false,      
+      inTime: 0,
+      outTime: 0,
+      text: '',  
+      inTimeVTT: '',
+      outTimeVTT: ''
     }
   }
   
@@ -51,6 +56,7 @@ class SubtitleCreation extends React.Component {
       tracks[0].cues[cuesLength - 1].text = theText;
       // clear modal text
       document.getElementById('this-sub-text').value = '';
+      this.setState({inTime: tracks[0].cues[cuesLength - 1].startTime, outTime: tracks[0].cues[cuesLength - 1].endTime, text: tracks[0].cues[cuesLength - 1].text });      
       video.play();
       modal.style.display = 'none';
     };

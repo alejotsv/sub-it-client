@@ -69,7 +69,7 @@ class ProjectPage extends React.Component {
                     
                 </div>
 
-                < SubtitleCreation />
+                < SubtitleCreation projectId='5dc8e4dedc3f1e1899a79483'/>
 
             </div>
 
