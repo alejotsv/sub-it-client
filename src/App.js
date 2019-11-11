@@ -10,6 +10,7 @@ import Register from './components/Register'
 import ProjectsList from './components/ProjectsList'
 // import Project_form from './components/Project_form';
 // import Home from './components/Home';
+import ProjectDetails from './components/ProjectDetailPage';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route path="/dashboard" component={ProjectsList} />
+            <Route path="/dashboard/workingproject" component={ProjectDetails} />
             {/* <Route exact path="/project" component={Project_form} /> */}
           </div>
         </div>
