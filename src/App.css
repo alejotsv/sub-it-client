@@ -160,3 +160,60 @@ NAVBAR STYLING
   padding: 0 8px;
 } */
 
+
+
+
+
+/************************************************
+
+              DROP ZONE STYLING
+
+*************************************************/
+
+.drop-zone-container {
+  width: 700px;
+  height: 200px;
+  background-color: #e4e4e4;
+  color: #8a8a8a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  border: 1px solid #cccccc;
+  will-change: transform;
+  transition: transform 0.3s;
+}
+
+.drop-zone-container.hover {
+  transform: scale(0.95);
+
+  background-color: rgb(209,236,241);
+}
+
+.drop-zone-container:hover {
+  cursor: pointer;
+}
+
+.drop-zone-container input {
+  display: none;
+}
+
+.hasFile {
+  
+  background-color: rgb(212,237,218);
+
+}
+
+/************************************************
+
+              FILE PREVIEW STYLING
+
+*************************************************/
+
+/*  */
+#pg-viewer > div > div > video {
+  width: 300px;
+  height: 600px;
+}
