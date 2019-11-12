@@ -46,7 +46,7 @@ class ProjectForm extends React.Component {
     }
 
     handleSubmit(event) {
-        if(!this.props.theUser) {
+        if (!this.props.theUser) {
             this.props.history.push('/login');
         }
 
@@ -64,7 +64,10 @@ class ProjectForm extends React.Component {
         console.log('SELECTED FILE BEFORE APPPENDING', this.state.videoFile);
         data.append('videoFile', this.state.videoFile);
 
-        axios.post(`http://localhost:3001/tut/uploadFile/${this.props.theUser._id}`, data, { withCredentials: true })
+        axios.post(`http://localhost:3001/api/create-project/${this.props.theUser._id}`,
+            data, //Send form data to post
+            { withCredentials: true })
+
             .then((response) => {
                 console.log('SUCCESSFUL CALL');
                 alert(JSON.stringify(response));
@@ -125,7 +128,7 @@ class ProjectForm extends React.Component {
                     <br /> <label> Video File: </label>
 
                     <Dropzone updateParent={this.updateStateFileIfFileAdded.bind(this)} />
-                    
+
                     <button> Update </button>
 
                     {/* Styling is in app.css */}

@@ -1,14 +1,7 @@
-//TODO LIST 
-/*
-
-1. Get video url from projects and pass them to Project component prop
-
-*/
-
-
 import React from 'react';
 import Project from './Project'
 import axios from "axios";
+
 // Import Personal Card Styling AND CONTAINER STYLING
 import '../../ProjectStyles.css'
 
@@ -31,7 +24,7 @@ class ProjectsList extends React.Component {
         if (!this.props.theUser) {
             this.props.history.push('/login')
         }
-        console.log("this is the did mount and the props ========= ", this.props)
+        console.log("333333333333333333333333 this is the did mount and the props ========= ", this.props)
         // Calls endpoint in backend that returns projects from a logged in user 
         axios.get(`http://localhost:3001/dashboard/${this.props.theUser._id}`)// secure sending
             .then(response => {

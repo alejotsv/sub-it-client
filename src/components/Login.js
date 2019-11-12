@@ -13,13 +13,12 @@ class Login extends Component {
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-    
+
   }
 
-  
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
-    }
+  }
   onSubmit(e) {
     e.preventDefault()
 
@@ -27,35 +26,39 @@ class Login extends Component {
       userName: this.state.userName,
       email: this.state.email,
       password: this.state.password,
-      }
-    
-      const { userName } = this.state;
-      localStorage.setItem('currentUser', userName);
-          
+    }
 
-      login(user).then(res => {
-        if (res) {
+    const { userName } = this.state;
+    localStorage.setItem('currentUser', userName);
+
+
+    login(user).then(res => {
+      if (res) {
         console.log(res.userDoc.userName)
         localStorage.setItem('currentUserId', res.userDoc._id);
         localStorage.setItem('currentUserName', res.userDoc.userName);
-        
+
         this.props.history.push(`/dashboard/${res.userDoc._id}`)
-        }
-        else{
-           alert('Please, provide correct credentials')
-            }
+      }
+      else {
+        alert('Please, provide correct credentials')
+      }
     })
-    
-       
+
+
   }
 
   render() {
-    
+
     return (
       <div className="container_login">
+
         <div className="row">
+
           <div className="col-md-6 mt-5 mx-auto">
+
             <form noValidate onSubmit={this.onSubmit}>
+
               <h1 className="h3 mb-3 font-weight-normal"><span className='form_title_text'>
                 Have an account already?</span></h1>
               {/* <div className="form-group">
@@ -71,6 +74,7 @@ class Login extends Component {
                 />
               </div> */}
               <div className="form-group">
+
                 <label htmlFor="email"><span className='form_text'>Email address</span></label>
                 <input
                   type="email"
@@ -82,7 +86,9 @@ class Login extends Component {
                   onChange={this.onChange}
                 />
               </div>
+
               <div className="form-group">
+
                 <label htmlFor="password"><span className='form_text'>Password</span></label>
                 <input
                   type="password"
@@ -94,15 +100,22 @@ class Login extends Component {
                   onChange={this.onChange}
                 />
               </div>
+
               <button
                 type="submit"
                 className="btn btn-lg btn-dark btn-block"
               >
+
                 <span className='button_text'>Sign in</span>
+
               </button>
+
             </form>
+
           </div>
+
         </div>
+
       </div>
     )
   }
