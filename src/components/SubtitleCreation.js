@@ -1,6 +1,5 @@
 import React from 'react';
-// import Project from './Project'
-// import axios from "axios";
+import axios from "axios";
 
 class SubtitleCreation extends React.Component {
   
@@ -15,6 +14,8 @@ class SubtitleCreation extends React.Component {
       outTimeVTT: ''
     }
   }
+
+
   
     // function to create each subtitle
     createSub = () => {
@@ -35,7 +36,7 @@ class SubtitleCreation extends React.Component {
         tracks[0].cues[cuesLength - 1].endTime = outTime;
         this.setState({subInit: false });
         // call function to display modal and enter text subtitle
-        this.completeSub();
+        this.completeSub();        
       }
     };
 
@@ -59,6 +60,20 @@ class SubtitleCreation extends React.Component {
       this.setState({inTime: tracks[0].cues[cuesLength - 1].startTime, outTime: tracks[0].cues[cuesLength - 1].endTime, text: tracks[0].cues[cuesLength - 1].text });      
       video.play();
       modal.style.display = 'none';
+        // define variables for addSubtitle() axios call
+        let thisProjectId = this.props.projectId;
+        setTimeout(() => {
+          let thisSubtitle = {
+            projectId: thisProjectId,
+            inTime: this.state.inTime,
+            outTime: this.state.outTime,
+            text: this.state.text,
+            inTimeVTT: this.state.inTimeVTT,
+            outTimeVTT: this.state.outTimeVTT
+          }
+            console.log(thisSubtitle) 
+                  }, 300);      
+
     };
 
     // function to cancel and clear current subtitle sith Cancel button in modal

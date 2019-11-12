@@ -217,3 +217,8 @@ NAVBAR STYLING
   width: 300px;
   height: 600px;
 }
+
+#video-container {
+  margin-top: 10%;
+  text-align: left;
+}

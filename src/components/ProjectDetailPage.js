@@ -37,7 +37,7 @@ class ProjectPage extends React.Component {
 
             <div>
 
-                <div>
+                <div id='video-container'>
 
                     {/* <video
                         id="project-Being-Worked-On"
@@ -68,9 +68,9 @@ class ProjectPage extends React.Component {
                     </div>
                     
                 </div>
-
+                
                 < SubtitleCreation projectId='5dc8e4dedc3f1e1899a79483'/>
-
+                
             </div>
 
 
