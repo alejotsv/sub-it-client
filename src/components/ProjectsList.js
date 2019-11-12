@@ -39,6 +39,7 @@ class ProjectsList extends Component {
       </div>)
     }
     else {
+      
       console.log("-------------- ", this.state.projects);
       
       const newArr = (this.state.projects).map((proj, item) => {

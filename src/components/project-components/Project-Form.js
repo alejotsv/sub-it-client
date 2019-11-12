@@ -62,15 +62,16 @@ class ProjectForm extends React.Component {
         data.append('language', this.state.language);
 
         console.log('SELECTED FILE BEFORE APPPENDING', this.state.videoFile);
+
         data.append('videoFile', this.state.videoFile);
 
-        axios.post(`http://localhost:3001/api/create-project/${this.props.theUser._id}`,
+        axios.post(`${process.env.REACT_APP_API_URL}/create-project/${this.props.theUser._id}`,
             data, //Send form data to post
             { withCredentials: true })
 
             .then((response) => {
-                console.log('SUCCESSFUL CALL');
-                alert(JSON.stringify(response));
+                console.log('SUCCESSFULCALL TO CREATE PROJECT ROUTE');
+                // alert(JSON.stringify(response));
             })
             .catch(function (error) {
                 console.log(error);
@@ -129,7 +130,7 @@ class ProjectForm extends React.Component {
 
                     <Dropzone updateParent={this.updateStateFileIfFileAdded.bind(this)} />
 
-                    <button> Update </button>
+                    <button> Upload! </button>
 
                     {/* Styling is in app.css */}
                     <FileViewer

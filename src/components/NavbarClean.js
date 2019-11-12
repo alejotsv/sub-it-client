@@ -7,8 +7,11 @@ import Home from './Home'
 import Login from './Login'
 import LoginClean from './user-components/LoginClean'
 
-import Register from './Register'
 import ProjectsList from './ProjectsList'
+import ProjectsListAlex from './project-components/ProjectsListpp'
+
+
+import Register from './Register'
 import ProjectForm from './project-components/Project-Form'
 import ProjectDetails from './ProjectDetailPage'
 import axios from "axios";
@@ -35,7 +38,7 @@ class Navbar extends Component {
         // Check if user is signed in then update state
         axios.get(`${process.env.REACT_APP_API_URL}/checkuser`, { withCredentials: true })
             .then(responseFromTheBackend => {
-                console.log("===========================User in APP.JS: ", responseFromTheBackend.data)
+                // console.log("===========================User in APP.JS: ", responseFromTheBackend.data)
                 const { userDoc } = responseFromTheBackend.data;
                 this.syncCurrentUSer(userDoc);
             })
@@ -70,8 +73,14 @@ class Navbar extends Component {
                 </li>
 
                 <li className="nav-item">
-                    <NavLink className="navbar-brand" to="/projectForm">
+                    <NavLink className="navbar-brand" to="/projectForm/:userid">
                         <span className="nav_elements"> ProjectForm </span>
+                    </NavLink>
+                </li>
+
+                <li className="nav-item">
+                    <NavLink className="navbar-brand" to="/projectList/:userid">
+                        <span className="nav_elements"> ProjectList </span>
                     </NavLink>
                 </li>
 
@@ -115,6 +124,7 @@ class Navbar extends Component {
                 </nav>
 
                 <Switch>
+
                     <div className="App">
 
                         <Route exact path="/" component={Home} />
@@ -124,10 +134,11 @@ class Navbar extends Component {
                             <Route exact path="/register" component={Register} />
                             {/* <Route exact path="/login" component={LoginClean} /> */}
                             <Route exact path="/dashboard" component={ProjectsList} />
-
-                            <Route exact path="/projectForm" component={ProjectForm} />
-
+                            
                             <Route exact path="/dashboard/workingproject" component={ProjectDetails} />
+
+                            {/* TODO My stuff */}
+                            {/* <Route exact path="/projectList/:userid" component={ProjectsListAlex} /> */}
 
                             {/* if we have to pass some props down to a component, we can't use a standard way of rendering using component={},
                                 but instead we have to use render = {}  like in the example below */}
@@ -135,12 +146,15 @@ class Navbar extends Component {
                             {/* In render , pass props argument so it can take props
                               * Also pass synccurrentUser function, that will get the signed in user from login component then update user in state here
                              */}
+
                             <Route exact path="/login" render={props => <LoginClean {...props} onUserChange={userDoc => this.syncCurrentUSer(userDoc)} />} />
                             <Route exact path="/projectForm/:userid" render={props => <ProjectForm {...props} theUser={this.state.currentUser} />} />
+                            <Route exact path="/projectList/:userid" render={props => <ProjectsListAlex {...props} theUser={this.state.currentUser} />} />
 
                         </div>
 
                     </div>
+
                 </Switch>
 
             </div>

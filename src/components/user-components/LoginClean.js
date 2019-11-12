@@ -24,7 +24,7 @@ class Login extends Component {
 
     handleSubmit(event) {
 
-        console.log("submitting form");
+        console.log("submitting form from clean");
         event.preventDefault();
 
         axios.post(
@@ -47,9 +47,15 @@ class Login extends Component {
 
                 this.props.onUserChange(userDoc);
                 console.log(`~~~~~~~~~~~~~ USER DOC`, userDoc);
-                // this.props.history.push('/ProjectsList');
 
-                // alert("You are logged in.")
+                // Go to User Dashboard after logging in
+                // this.props.history.push(`/dashboard/${userDoc._id}`)
+
+                // My Project List 
+                // this.props.history.push(`/projectForm/${userDoc._id}`)
+                
+                // Users Projects
+                this.props.history.push(`/projectList/${userDoc._id}`)
 
             })
             .catch(err => {
@@ -89,7 +95,7 @@ class Login extends Component {
                     </form>
                     {/* if the message is not null (basically if there's a message) then show it in this <div> tag */}
                     {this.state.message && <div> {this.state.message} </div>}
-                    
+
                 </section>
 
             </div>
