@@ -136,6 +136,7 @@ class Navbar extends Component {
                               * Also pass synccurrentUser function, that will get the signed in user from login component then update user in state here
                              */}
                             <Route exact path="/login" render={props => <LoginClean {...props} onUserChange={userDoc => this.syncCurrentUSer(userDoc)} />} />
+                            <Route exact path="/projectForm/:userid" render={props => <ProjectForm {...props} theUser={this.state.currentUser} />} />
 
                         </div>
 

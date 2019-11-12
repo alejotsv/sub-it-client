@@ -35,7 +35,7 @@ class ProjectsList extends Component {
         <h2>
           What are you waiting for creating a project?
                 </h2>
-        <a href={`/Projectform/${uId}`} className="btn btn-dark">Add a project</a>
+        <a href={`/projectForm/${uId}`} className="btn btn-dark">Add a project</a>
       </div>)
     }
     else {
