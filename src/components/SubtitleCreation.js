@@ -15,6 +15,19 @@ class SubtitleCreation extends React.Component {
     }
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const user = {
+      name: this.state.name
+    };
+
+    axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+  }
 
   
     // function to create each subtitle
@@ -57,22 +70,40 @@ class SubtitleCreation extends React.Component {
       tracks[0].cues[cuesLength - 1].text = theText;
       // clear modal text
       document.getElementById('this-sub-text').value = '';
-      this.setState({inTime: tracks[0].cues[cuesLength - 1].startTime, outTime: tracks[0].cues[cuesLength - 1].endTime, text: tracks[0].cues[cuesLength - 1].text });      
+      let thisProjectId = this.props.projectId;
+      this.setState({inTime: tracks[0].cues[cuesLength - 1].startTime, outTime: tracks[0].cues[cuesLength - 1].endTime, text: tracks[0].cues[cuesLength - 1].text },
+        () => {
+          let thisSubtitle = {                
+                inTime: this.state.inTime,
+                outTime: this.state.outTime,
+                text: this.state.text,
+                inTimeVTT: this.state.inTimeVTT,
+                outTimeVTT: this.state.outTimeVTT
+              }                
+          axios.post(`${process.env.REACT_APP_API_URL}/${thisProjectId}/add-sub`, thisSubtitle)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
+        );      
       video.play();
       modal.style.display = 'none';
         // define variables for addSubtitle() axios call
-        let thisProjectId = this.props.projectId;
-        setTimeout(() => {
-          let thisSubtitle = {
-            projectId: thisProjectId,
-            inTime: this.state.inTime,
-            outTime: this.state.outTime,
-            text: this.state.text,
-            inTimeVTT: this.state.inTimeVTT,
-            outTimeVTT: this.state.outTimeVTT
-          }
-            console.log(thisSubtitle) 
-                  }, 300);      
+        // setTimeout(() => {
+        //   let thisSubtitle = {
+        //     projectId: thisProjectId,
+        //     inTime: this.state.inTime,
+        //     outTime: this.state.outTime,
+        //     text: this.state.text,
+        //     inTimeVTT: this.state.inTimeVTT,
+        //     outTimeVTT: this.state.outTimeVTT
+        //   }
+        //     console.log(thisSubtitle)
+            
+        //           }, 300);      
 
     };
 
