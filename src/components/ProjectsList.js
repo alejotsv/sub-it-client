@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../ProjectStyles.css';
+import Projectlist from './project-components/ProjectsListpp'
 // import ProjectCard from './ProjectCard';
 // import { checkUser } from './UserFunctions'
 
@@ -39,7 +40,7 @@ class ProjectsList extends Component {
       </div>)
     }
     else {
-      
+
       console.log("-------------- ", this.state.projects);
       
       const newArr = (this.state.projects).map((proj, item) => {
@@ -70,12 +71,17 @@ class ProjectsList extends Component {
   render() {
 
     return (
+
       <div className="container_profile">
         <div><h2>Hello, {this.state.userName}!</h2></div>
         <div>
           {this.renderingElements()}
         </div>
+
+        <Projectlist />
+
       </div>
+
     )
 
   }

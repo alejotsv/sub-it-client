@@ -15,8 +15,8 @@ class Login extends Component {
 
     // Changes state values for change in text fields
     genericSync(event) {
-        console.log("==============================================================Target is: ", event.target)
-        console.log("==============================================================Value is: ", event.target.value)
+        // console.log("==============================================================Target is: ", event.target)
+        // console.log("==============================================================Value is: ", event.target.value)
         // Destructure to get naame and value for target 
         const { name, value } = event.target;
         this.setState({ [name]: value });
@@ -45,17 +45,17 @@ class Login extends Component {
                 console.log(`Here is the user logged in info: `, userDoc)
 
 
+                // Update Parent State to know user is now signed in
                 this.props.onUserChange(userDoc);
                 console.log(`~~~~~~~~~~~~~ USER DOC`, userDoc);
 
                 // Go to User Dashboard after logging in
                 // this.props.history.push(`/dashboard/${userDoc._id}`)
 
-                // My Project List 
-                // this.props.history.push(`/projectForm/${userDoc._id}`)
+                // Users Projects after sign in
                 
-                // Users Projects
-                this.props.history.push(`/projectList/${userDoc._id}`)
+                // Project List Comoponent to see if its working after login
+                this.props.history.push(`/user-dashboard`)
 
             })
             .catch(err => {

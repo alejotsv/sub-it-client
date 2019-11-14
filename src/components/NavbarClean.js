@@ -11,8 +11,11 @@ import ProjectsList from './ProjectsList'
 import ProjectsListAlex from './project-components/ProjectsListpp'
 
 
-import Register from './Register'
+
 import ProjectForm from './project-components/Project-Form'
+
+
+import Register from './Register'
 import ProjectDetails from './ProjectDetailPage'
 import axios from "axios";
 
@@ -67,20 +70,14 @@ class Navbar extends Component {
             <ul className="navbar-nav">
 
                 <li className="nav-item">
-                    <NavLink className="navbar-brand" to="/dashboard">
+                    <NavLink className="navbar-brand" to="/projectForm/">
+                        <span className="nav_elements"> Upload A Project </span>
+                    </NavLink>
+                </li>
+
+                <li className="nav-item">
+                    <NavLink className="navbar-brand" to="/user-dashboard">
                         <span className="nav_elements"> Dashboard </span>
-                    </NavLink>
-                </li>
-
-                <li className="nav-item">
-                    <NavLink className="navbar-brand" to="/projectForm/:userid">
-                        <span className="nav_elements"> ProjectForm </span>
-                    </NavLink>
-                </li>
-
-                <li className="nav-item">
-                    <NavLink className="navbar-brand" to="/projectList/:userid">
-                        <span className="nav_elements"> ProjectList </span>
                     </NavLink>
                 </li>
 
@@ -133,12 +130,14 @@ class Navbar extends Component {
 
                             <Route exact path="/register" component={Register} />
                             {/* <Route exact path="/login" component={LoginClean} /> */}
-                            <Route exact path="/dashboard" component={ProjectsList} />
-                            
+                            {/* <Route exact path="/dashboard" component={ProjectsList} /> */}
+
+
+
                             <Route exact path="/dashboard/workingproject" component={ProjectDetails} />
 
                             {/* TODO My stuff */}
-                            {/* <Route exact path="/projectList/:userid" component={ProjectsListAlex} /> */}
+                            {/* <Route exact path="/user-dashboard/:userid" component={ProjectsListAlex} /> */}
 
                             {/* if we have to pass some props down to a component, we can't use a standard way of rendering using component={},
                                 but instead we have to use render = {}  like in the example below */}
@@ -148,8 +147,8 @@ class Navbar extends Component {
                              */}
 
                             <Route exact path="/login" render={props => <LoginClean {...props} onUserChange={userDoc => this.syncCurrentUSer(userDoc)} />} />
-                            <Route exact path="/projectForm/:userid" render={props => <ProjectForm {...props} theUser={this.state.currentUser} />} />
-                            <Route exact path="/projectList/:userid" render={props => <ProjectsListAlex {...props} theUser={this.state.currentUser} />} />
+                            <Route exact path="/projectForm/" render={props => <ProjectForm {...props} theUser={this.state.currentUser} />} />
+                            <Route exact path="/user-dashboard" render={props => <ProjectsListAlex {...props} theUser={this.state.currentUser} />} />
 
                         </div>
 
