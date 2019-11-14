@@ -27,26 +27,7 @@ class Navbar extends Component {
         }
     }
 
-    // logOut(e) {
-    //     e.preventDefault()
-
-    //     // Check if user is signed in then update state
-    //     axios.post(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true })
-    //         .then(responseFromTheBackend => {
-    //             console.log("===========================I HAVE LOGGED OUT USER ");
-    //             // const { userDoc } = responseFromTheBackend.data;
-    //             // this.syncCurrentUSer(userDoc);
-    //             this.setState({
-    //                 currentUser: null
-    //             })
-
-    //         })
-    //         .catch(err => console.log("Err while logging out the user from the logout route route: ", err))
-
-    //     this.props.history.push(`/login`)
-    // }
-
-    // When Component Renders ( Will)
+    // When Component Renders
     componentDidMount() {
 
         // Check if user is signed in then update state
@@ -91,7 +72,8 @@ class Navbar extends Component {
                 <li> <NavLink className="navbar-brand" to="/"></NavLink></li>
                 <li> <NavLink className="navbar-brand" to="/login"><span className="nav_elements">Login</span> </NavLink></li>
                 <li> <NavLink className="navbar-brand" to="/register"> <span className="nav_elements">Register</span></NavLink> </li>
-                <li> <NavLink className="navbar-brand" to="/land"> <span className="nav_elements"> Land </span> </NavLink>  </li>
+                
+                <li> <NavLink className="navbar-brand" to="/land"> <span className="nav_elements">Land</span></NavLink> </li>
 
             </ul>
 
@@ -182,7 +164,6 @@ class Navbar extends Component {
                 </Switch>
 
             </div>
-
 
         )
     }
