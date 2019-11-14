@@ -4,19 +4,17 @@ import { Switch, Route, NavLink } from "react-router-dom";
 // components to render 
 import Home from './Home'
 
-import Login from './Login'
 import LoginClean from './user-components/LoginClean'
-
-import ProjectsList from './ProjectsList'
 import ProjectsListAlex from './project-components/ProjectsListpp'
-
-
-
 import ProjectForm from './project-components/Project-Form'
+import LandingPage from './LandingPage'
 
 
-import Register from './Register'
+import Login from './Login'
+import ProjectsList from './ProjectsList'
 import ProjectDetails from './ProjectDetailPage'
+import Register from './Register'
+
 import axios from "axios";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,11 +27,24 @@ class Navbar extends Component {
         }
     }
 
-    logOut(e) {
-        e.preventDefault()
-        localStorage.removeItem('usertoken')
-        this.props.history.push(`/login`)
-    }
+    // logOut(e) {
+    //     e.preventDefault()
+
+    //     // Check if user is signed in then update state
+    //     axios.post(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true })
+    //         .then(responseFromTheBackend => {
+    //             console.log("===========================I HAVE LOGGED OUT USER ");
+    //             // const { userDoc } = responseFromTheBackend.data;
+    //             // this.syncCurrentUSer(userDoc);
+    //             this.setState({
+    //                 currentUser: null
+    //             })
+
+    //         })
+    //         .catch(err => console.log("Err while logging out the user from the logout route route: ", err))
+
+    //     this.props.history.push(`/login`)
+    // }
 
     // When Component Renders ( Will)
     componentDidMount() {
@@ -59,14 +70,15 @@ class Navbar extends Component {
 
         // Check if user is signed in then update state
         axios.post(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true })
-        .then(responseFromTheBackend => {
+            .then(responseFromTheBackend => {
                 console.log("===========================I HAVE LOGGED OUT USER ");
                 // const { userDoc } = responseFromTheBackend.data;
                 // this.syncCurrentUSer(userDoc);
                 this.setState({
-                    currentUser : null
+                    currentUser: null
                 })
 
+                this.props.history.push(`/login`)
             })
             .catch(err => console.log("Err while logging out the user from the logout route route: ", err))
 
@@ -79,6 +91,8 @@ class Navbar extends Component {
                 <li> <NavLink className="navbar-brand" to="/"></NavLink></li>
                 <li> <NavLink className="navbar-brand" to="/login"><span className="nav_elements">Login</span> </NavLink></li>
                 <li> <NavLink className="navbar-brand" to="/register"> <span className="nav_elements">Register</span></NavLink> </li>
+                <li> <NavLink className="navbar-brand" to="/land"> <span className="nav_elements"> Land </span> </NavLink>  </li>
+
             </ul>
 
         )
@@ -104,6 +118,7 @@ class Navbar extends Component {
                         <span className="nav_elements"> Logout </span>
                     </NavLink>
                 </li>
+
 
             </ul>
 
@@ -143,20 +158,9 @@ class Navbar extends Component {
                     <div className="App">
 
                         <Route exact path="/" component={Home} />
+                        <Route exact path="/land" component={LandingPage} />
 
                         <div className="container">
-
-                            {/* <Route exact path="/register" component={Register} /> */}
-                            {/* <Route exact path="/login" component={LoginClean} /> */}
-                            {/* <Route exact path="/dashboard" component={ProjectsList} /> */}
-
-
-
-
-                            <Route exact path="/dashboard/workingproject" component={ProjectDetails} />
-
-                            {/* TODO My stuff */}
-                            {/* <Route exact path="/user-dashboard/:userid" component={ProjectsListAlex} /> */}
 
                             {/* if we have to pass some props down to a component, we can't use a standard way of rendering using component={},
                                 but instead we have to use render = {}  like in the example below */}
@@ -167,7 +171,6 @@ class Navbar extends Component {
 
                             <Route exact path="/register" render={props => <Register {...props} onUserChange={userDoc => this.syncCurrentUSer(userDoc)} />} />
                             <Route exact path="/login" render={props => <LoginClean {...props} onUserChange={userDoc => this.syncCurrentUSer(userDoc)} />} />
-                            <Route exact path="/logout" render={props => <Home {...props} logout={this.logOut()} theUser={this.state.currentUser} />} />
 
                             <Route exact path="/projectForm/" render={props => <ProjectForm {...props} theUser={this.state.currentUser} />} />
                             <Route exact path="/user-dashboard" render={props => <ProjectsListAlex {...props} theUser={this.state.currentUser} />} />

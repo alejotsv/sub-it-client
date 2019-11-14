@@ -71,6 +71,10 @@ class ProjectForm extends React.Component {
 
             .then((response) => {
                 console.log('SUCCESSFULCALL TO CREATE PROJECT ROUTE');
+
+                // Redirect to dashboard after video upload
+                // Maybe a modal asking if they want to upload another first?
+                this.props.history.push(`/user-dashboard`)
                 // alert(JSON.stringify(response));
             })
             .catch(function (error) {

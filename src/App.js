@@ -20,25 +20,9 @@ class App extends Component {
   render() {
     return (
 
-      // <Router>
-      //   <div className="App">
-      //     <Navbar />
-      //     <Route exact path="/" component={Home} />
-      //     <div className="container">
-      //       <Route exact path="/register" component={Register} />
-      //       <Route exact path="/login" component={Login} />
-      //       <Route path="/dashboard" component={ProjectsList} />
-
-      //       <Route path="/projectForm" component={ProjectForm} />
-
-      //       <Route path="/dashboard/workingproject" component={ProjectDetails} />
-      //       {/* <Route exact path="/project" component={Project_form} /> */}
-      //     </div>
-      //   </div>
-      // </Router>
 
       <NavbarClean />
-     
+
 
 
     )
