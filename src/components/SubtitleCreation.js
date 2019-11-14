@@ -13,22 +13,35 @@ class SubtitleCreation extends React.Component {
       inTimeVTT: '',
       outTimeVTT: ''
     }
-  }
+  }  
 
-  handleSubmit = event => {
-    event.preventDefault();
-
-    const user = {
-      name: this.state.name
+  timeToVTT = (num) => {
+    let stringNum = num.toFixed(3);
+    let splitNum = stringNum.split('.');
+    let totalSeconds = splitNum[0];
+    let totalMilliseconds = splitNum[1];
+    console.log('Total seconds: ' + totalSeconds);
+    console.log('Total milliseconds :' + totalMilliseconds);
+    
+    let hours = Math.floor(totalSeconds / 3600);
+    totalSeconds %= 3600;
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+    
+    console.log("hours: " + hours);
+    console.log("minutes: " + minutes);
+    console.log("seconds: " + seconds);
+    console.log("milliseconds: " + totalMilliseconds);
+    
+    // If you want strings with leading zeroes:
+    minutes = String(minutes).padStart(2, "0");
+    hours = String(hours).padStart(2, "0");
+    seconds = String(seconds).padStart(2, "0");
+    
+    let timeVTT = hours + ":" + minutes + ":" + seconds + "." + totalMilliseconds;
+    
+    return timeVTT;
     };
-
-    axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-  }
-
   
     // function to create each subtitle
     createSub = () => {
@@ -71,15 +84,23 @@ class SubtitleCreation extends React.Component {
       // clear modal text
       document.getElementById('this-sub-text').value = '';
       let thisProjectId = this.props.projectId;
-      this.setState({inTime: tracks[0].cues[cuesLength - 1].startTime, outTime: tracks[0].cues[cuesLength - 1].endTime, text: tracks[0].cues[cuesLength - 1].text },
+
+      // Create VTT inTime and outTime with timeToVTT function
+      let inVTT = this.timeToVTT(tracks[0].cues[cuesLength - 1].startTime);
+      let outVTT = this.timeToVTT(tracks[0].cues[cuesLength - 1].endTime);
+
+      // Set state with current subtitle
+      this.setState({inTime: tracks[0].cues[cuesLength - 1].startTime, outTime: tracks[0].cues[cuesLength - 1].endTime, text: tracks[0].cues[cuesLength - 1].text, inTimeVTT: inVTT, outTimeVTT: outVTT },
         () => {
+          // After setting state, define headers for axios post request
           let thisSubtitle = {                
                 inTime: this.state.inTime,
                 outTime: this.state.outTime,
                 text: this.state.text,
                 inTimeVTT: this.state.inTimeVTT,
                 outTimeVTT: this.state.outTimeVTT
-              }                
+              }    
+          // Post request to push current subtitle to the database
           axios.post(`${process.env.REACT_APP_API_URL}/${thisProjectId}/add-sub`, thisSubtitle)
           .then(function (response) {
             console.log(response);
@@ -91,20 +112,6 @@ class SubtitleCreation extends React.Component {
         );      
       video.play();
       modal.style.display = 'none';
-        // define variables for addSubtitle() axios call
-        // setTimeout(() => {
-        //   let thisSubtitle = {
-        //     projectId: thisProjectId,
-        //     inTime: this.state.inTime,
-        //     outTime: this.state.outTime,
-        //     text: this.state.text,
-        //     inTimeVTT: this.state.inTimeVTT,
-        //     outTimeVTT: this.state.outTimeVTT
-        //   }
-        //     console.log(thisSubtitle)
-            
-        //           }, 300);      
-
     };
 
     // function to cancel and clear current subtitle sith Cancel button in modal
