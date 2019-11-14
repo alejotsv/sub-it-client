@@ -52,7 +52,7 @@ class ProjectsList extends React.Component {
                 <div>
 
                     <h2>
-                        What are you waiting for creating a project?
+                        What are you waiting for {this.props.theUser.userName} ?  Start creating!
                     </h2>
 
                     {/* TODO URGENT , THIS BUTTON IS LOGGING ME OUT FOR SOME REASON */}

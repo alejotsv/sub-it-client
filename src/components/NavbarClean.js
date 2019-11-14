@@ -54,6 +54,24 @@ class Navbar extends Component {
         this.setState({ currentUser: user })
     }
 
+    // Logout user being signed in in state
+    logOut() {
+
+        // Check if user is signed in then update state
+        axios.post(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true })
+        .then(responseFromTheBackend => {
+                console.log("===========================I HAVE LOGGED OUT USER ");
+                // const { userDoc } = responseFromTheBackend.data;
+                // this.syncCurrentUSer(userDoc);
+                this.setState({
+                    currentUser : null
+                })
+
+            })
+            .catch(err => console.log("Err while logging out the user from the logout route route: ", err))
+
+    }
+
     render() {
         const loginRegLink = (
 
@@ -128,9 +146,10 @@ class Navbar extends Component {
 
                         <div className="container">
 
-                            <Route exact path="/register" component={Register} />
+                            {/* <Route exact path="/register" component={Register} /> */}
                             {/* <Route exact path="/login" component={LoginClean} /> */}
                             {/* <Route exact path="/dashboard" component={ProjectsList} /> */}
+
 
 
 
@@ -146,7 +165,10 @@ class Navbar extends Component {
                               * Also pass synccurrentUser function, that will get the signed in user from login component then update user in state here
                              */}
 
+                            <Route exact path="/register" render={props => <Register {...props} onUserChange={userDoc => this.syncCurrentUSer(userDoc)} />} />
                             <Route exact path="/login" render={props => <LoginClean {...props} onUserChange={userDoc => this.syncCurrentUSer(userDoc)} />} />
+                            <Route exact path="/logout" render={props => <Home {...props} logout={this.logOut()} theUser={this.state.currentUser} />} />
+
                             <Route exact path="/projectForm/" render={props => <ProjectForm {...props} theUser={this.state.currentUser} />} />
                             <Route exact path="/user-dashboard" render={props => <ProjectsListAlex {...props} theUser={this.state.currentUser} />} />
 

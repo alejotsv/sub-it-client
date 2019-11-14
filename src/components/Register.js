@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios";
 import { register } from './UserFunctions'
 
 class Register extends Component {
@@ -7,8 +8,8 @@ class Register extends Component {
     this.state = {
       userName: '',
       email: '',
-      password: '',
-      errors: {}
+      password: ''
+      // ,errors: {}
     }
 
     this.onChange = this.onChange.bind(this)
@@ -19,17 +20,56 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
   onSubmit(e) {
+
     e.preventDefault()
 
-    const newUser = {
-      userName: this.state.userName,
-      email: this.state.email,
-      password: this.state.password
-    }
+    // const newUser = {
+    //   userName: this.state.userName,
+    //   email: this.state.email,
+    //   password: this.state.password
+    // }
 
-    register(newUser).then(res => {
-      this.props.history.push(`/login`)
-    })
+    // register(newUser).then(res => {
+    //   this.props.history.push(`/login`)
+    // })
+
+
+    axios.post(
+
+      // route we are hitting in the backend to login
+      `${process.env.REACT_APP_API_URL}/signup`,
+      // the data from the form (AKA req.body 🚀) that we are sending to this route to do the job
+      this.state,
+      // secure sending
+      { withCredentials: true }
+    )
+      .then(responseFromServer => {
+
+        console.log("response from back end is:", responseFromServer.data);
+        // console.log("do I have any props ????????? ", this.props)
+        const { userDoc } = responseFromServer.data;
+
+        console.log(`Here is the user logged in info: `, userDoc)
+
+
+        // Update Parent State to know user is now signed in
+        this.props.onUserChange(userDoc);
+        console.log(`~~~~~~~~~~~~~ USER DOC`, userDoc);
+
+        // Go to User Dashboard after logging in
+        // this.props.history.push(`/dashboard/${userDoc._id}`)
+
+        // Users Projects after sign in
+
+        // Project List Comoponent to see if its working after login
+        this.props.history.push(`/user-dashboard`)
+
+      })
+      .catch(err => {
+        console.log("err: ", err.response)
+        if (err) return this.setState({ message: err })
+      });
+
   }
 
   render() {
@@ -78,7 +118,7 @@ class Register extends Component {
               <button type="submit"
                 className="btn btn-lg btn-dark btn-block"
               >
-               <span className='button_text'>Register</span> 
+                <span className='button_text'>Register</span>
               </button>
             </form>
           </div>

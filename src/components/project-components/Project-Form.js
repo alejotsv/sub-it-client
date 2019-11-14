@@ -84,7 +84,7 @@ class ProjectForm extends React.Component {
 
         return (
 
-            <section>
+            <div className="container_profile">
 
                 <h2> Video Info </h2>
 
@@ -145,7 +145,7 @@ class ProjectForm extends React.Component {
                 {/* if the message is not null (basically if there's a message) then show it in this <div> tag */}
                 {this.state.message && <div> {this.state.message} </div>}
 
-            </section>
+            </div>
 
         );
     }
