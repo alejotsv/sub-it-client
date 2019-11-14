@@ -19,19 +19,12 @@ class SubtitleCreation extends React.Component {
     let stringNum = num.toFixed(3);
     let splitNum = stringNum.split('.');
     let totalSeconds = splitNum[0];
-    let totalMilliseconds = splitNum[1];
-    console.log('Total seconds: ' + totalSeconds);
-    console.log('Total milliseconds :' + totalMilliseconds);
+    let totalMilliseconds = splitNum[1];    
     
     let hours = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
-    
-    console.log("hours: " + hours);
-    console.log("minutes: " + minutes);
-    console.log("seconds: " + seconds);
-    console.log("milliseconds: " + totalMilliseconds);
+    let seconds = totalSeconds % 60;    
     
     // If you want strings with leading zeroes:
     minutes = String(minutes).padStart(2, "0");
@@ -108,6 +101,8 @@ class SubtitleCreation extends React.Component {
           .catch(function (error) {
             console.log(error);
           });
+
+          
         }
         );      
       video.play();

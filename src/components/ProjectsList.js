@@ -49,6 +49,7 @@ class ProjectsList extends Component {
               <div className="card-body">
                 <h4 className="card-title">{proj.title}</h4>
                 <p className="card-text">{proj.description}</p>
+                  {/* TODO: Get project ID as variable to replace 'workingproject' */}
                   <a href="/project/workingproject" className="btn btn-dark">See full project</a><br/><br/>
                   <a href="/profile" className="btn btn-secondary">Update project</a><br/><br/>
                   <a href="/profile" className="btn btn-danger">Delete project</a>

@@ -1,6 +1,7 @@
 import React from 'react';
 // import ReactPlayer from 'react-player';
 import SubtitleCreation from './SubtitleCreation';
+import ShowSubtitles from './ShowSubtitles';
 
 class ProjectPage extends React.Component {
     state = {
@@ -49,6 +50,8 @@ class ProjectPage extends React.Component {
                     /> */}
 
                     <video id="video" crossOrigin="anonymous" autoPlay controls preload="metadata">
+                    
+                    {/* TODO: Get project video URL from axios */}
                     <source src="https://res.cloudinary.com/alejotsv/video/upload/v1572146282/videoplayback_dznrfa.mp4" type="video/mp4" />
                     <track id="my-subs" label="English" kind="subtitles" srcLang="en" src="" default/> 
                     </video>
@@ -69,7 +72,9 @@ class ProjectPage extends React.Component {
                     
                 </div>
                 
+                {/* TODO: Get projectID from URL */}
                 < SubtitleCreation projectId='5dc8e4dedc3f1e1899a79483'/>
+                < ShowSubtitles projectId='5dc8e4dedc3f1e1899a79483' />
                 
             </div>
 
