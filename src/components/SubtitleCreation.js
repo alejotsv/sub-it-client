@@ -187,20 +187,6 @@ class SubtitleCreation extends React.Component {
       
     }
 
-    // EXPORT SUBTITLES CODE
-    // let subtitles = 'WEBVTT\n\n1\n00:00:03.000 --> 00:00:04.200\nThis is the first sub\n\n2\n00:00:04.300 --> 00:00:06.200\nThis is the second sub\n\n';
-    // console.log(subtitles);
-    // let blob = new Blob([subtitles], {type: "text/plain;charset=utf-8", endings:'native'}),
-    // url = URL.createObjectURL(blob);
-    // saveAs(blob, "subtitle.vtt");
-    // console.log(url);
-    
-    // document.getElementById('my-subs').setAttribute('href', url);
-    
-    // let vid = document.getElementById('video');
-    // let time = vid.currentTime;
-    // console.log(time);
-
   render() {
 
     return(
