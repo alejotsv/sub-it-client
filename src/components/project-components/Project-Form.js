@@ -4,6 +4,8 @@ import axios from "axios";
 import FileViewer from 'react-file-viewer';
 import Dropzone from '../dropzone'
 
+import '../../App.css'
+
 class ProjectForm extends React.Component {
 
     constructor(props) {
@@ -87,11 +89,13 @@ class ProjectForm extends React.Component {
 
         return (
 
-            <div className="container_profile">
+            <div className="project-upload-container">
 
-                <h2> Video Info </h2>
+                {/* <h2> Video Info </h2> */}
 
-                <form name='myForm' onSubmit={event => this.handleSubmit(event)} >
+                <form className="project-upload-container__form" name='myForm' onSubmit={event => this.handleSubmit(event)} >
+
+                    <h2> Video Info </h2>
 
                     <label> Video Title: </label>
                     <input
