@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import FileSaver from 'file-saver';
 
 class SubtitleCreation extends React.Component {
   
@@ -12,7 +13,8 @@ class SubtitleCreation extends React.Component {
       text: '',  
       inTimeVTT: '',
       outTimeVTT: '',
-      subtitles: []
+      subtitles: [],
+      download: []
     }
   }
 
@@ -168,6 +170,37 @@ class SubtitleCreation extends React.Component {
       modal.style.display = 'none';
     };
 
+    downloadSub = () => {
+      let thisProjectId = this.props.projectId;
+      let downloadVTT = `WEBVTT`
+      axios.get(`${process.env.REACT_APP_API_URL}/subtitles/${thisProjectId}`)
+      .then( (response) => {
+        this.setState({ download: response.data.subArray });       
+        let finishedSubs = this.state.download;
+        finishedSubs.map((sub) => {
+          downloadVTT += `\n\n${sub.inTimeVTT} --> ${sub.outTimeVTT}\n${sub.text}`;          
+        });
+        let blob = new Blob([downloadVTT], {type: "text/plain;charset=utf-8", endings:'native'});
+        FileSaver.saveAs(blob, 'subtitles.vtt');
+        })
+      .catch((err)=> {});
+      
+    }
+
+    // EXPORT SUBTITLES CODE
+    // let subtitles = 'WEBVTT\n\n1\n00:00:03.000 --> 00:00:04.200\nThis is the first sub\n\n2\n00:00:04.300 --> 00:00:06.200\nThis is the second sub\n\n';
+    // console.log(subtitles);
+    // let blob = new Blob([subtitles], {type: "text/plain;charset=utf-8", endings:'native'}),
+    // url = URL.createObjectURL(blob);
+    // saveAs(blob, "subtitle.vtt");
+    // console.log(url);
+    
+    // document.getElementById('my-subs').setAttribute('href', url);
+    
+    // let vid = document.getElementById('video');
+    // let time = vid.currentTime;
+    // console.log(time);
+
   render() {
 
     return(
@@ -192,6 +225,8 @@ class SubtitleCreation extends React.Component {
         <ul id='subtitle-list'>
         </ul>
       </div>
+
+      <button id='download-button' onClick={this.downloadSub}>Download subtitles</button>
 
     </div>
 
