@@ -13,21 +13,26 @@ class ShowSubtitles extends React.Component {
     let thisProjectId = this.props.projectId;
     axios.get(`${process.env.REACT_APP_API_URL}/subtitles/${thisProjectId}`)
      .then( (response) => {
-       this.setState({ subtitles: response.data.subArray });
-       console.log(this.state.subtitles[0].text);
+       this.setState({ subtitles: response.data.subArray });       
+       this.listSubtitles();
     })
      .catch((err)=> {})
     }
   
   listSubtitles = () => {
-    console.log('This is my list:' + this.state.subtitles[0]);
+    let subtitleList = document.getElementById('subtitle-list');
+    let projectSubtitles = this.state.subtitles;
+    projectSubtitles.map((sub) => {
+      subtitleList.innerHTML += `<li>${sub.text}</li><br>`;
+    })
+    console.log(subtitleList.innerHTML);
   }
 
   render() {
     return(
       <div id='show-subtitles'>
-        <ul>
-
+        Subtitles:
+        <ul id='subtitle-list'>
         </ul>
       </div>
     );

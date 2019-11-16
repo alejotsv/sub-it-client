@@ -11,9 +11,47 @@ class SubtitleCreation extends React.Component {
       outTime: 0,
       text: '',  
       inTimeVTT: '',
-      outTimeVTT: ''
+      outTimeVTT: '',
+      subtitles: []
     }
-  }  
+  }
+
+  componentDidMount(){
+    let thisProjectId = this.props.projectId;
+    axios.get(`${process.env.REACT_APP_API_URL}/subtitles/${thisProjectId}`)
+     .then( (response) => {
+       this.setState({ subtitles: response.data.subArray });       
+       this.listSubtitles();
+    })
+     .catch((err)=> {})
+    }
+  
+  listSubtitles = () => {
+    let tracks = document.querySelector('video').textTracks;
+    let video = document.getElementById('video');
+    let subtitleList = document.getElementById('subtitle-list');
+    let projectSubtitles = this.state.subtitles;
+    
+    // Loop through array
+    projectSubtitles.map((sub) => {
+      // Add existing subtitles to HTML track tag
+      let inTime = sub.inTime;
+      let outTime = sub.outTime;
+      let text = sub.text;
+      let cue = new VTTCue(inTime,outTime,text);
+      tracks[0].addCue(cue);
+      console.log(tracks[0]);
+
+      // Display existing subtitles in DOM
+      subtitleList.innerHTML += `<li>${sub.text} || ${sub.inTimeVTT} --> ${sub.outTimeVTT}</li><br>`;
+    })
+  }
+
+  listOneSubtitle = (sub, inTimeVTT, outTimeVTT) => {
+    // Display subtitle in DOM
+    let subtitleList = document.getElementById('subtitle-list');    
+    subtitleList.innerHTML += `<li>${sub} || ${inTimeVTT} --> ${outTimeVTT}</li><br>`;
+  }
 
   timeToVTT = (num) => {
     let stringNum = num.toFixed(3);
@@ -40,6 +78,7 @@ class SubtitleCreation extends React.Component {
     createSub = () => {
       let tracks = document.querySelector('video').textTracks;
       let video = document.getElementById('video');
+      let button = document.getElementById('creation-button');
 
       // if inTime has not been defined, create a new cue with startTime set to current video time
       if (this.state.subInit === false){      
@@ -47,6 +86,7 @@ class SubtitleCreation extends React.Component {
         let cue = new VTTCue(inTime,null,'');      
         tracks[0].addCue(cue);    
         this.setState({subInit: true });
+        button.innerHTML = 'Out Time';
       // if inTime has already been defined, set cue endTime to current video time and pause video
       } else {
         let outTime = video.currentTime;
@@ -55,7 +95,8 @@ class SubtitleCreation extends React.Component {
         tracks[0].cues[cuesLength - 1].endTime = outTime;
         this.setState({subInit: false });
         // call function to display modal and enter text subtitle
-        this.completeSub();        
+        this.completeSub();
+        button.innerHTML = 'In Time';      
       }
     };
 
@@ -93,6 +134,10 @@ class SubtitleCreation extends React.Component {
                 inTimeVTT: this.state.inTimeVTT,
                 outTimeVTT: this.state.outTimeVTT
               }    
+          
+          // Display sub in list
+          this.listOneSubtitle(this.state.text, this.state.inTimeVTT, this.state.outTimeVTT); 
+          
           // Post request to push current subtitle to the database
           axios.post(`${process.env.REACT_APP_API_URL}/${thisProjectId}/add-sub`, thisSubtitle)
           .then(function (response) {
@@ -104,7 +149,7 @@ class SubtitleCreation extends React.Component {
 
           
         }
-        );      
+        );
       video.play();
       modal.style.display = 'none';
     };
@@ -127,7 +172,7 @@ class SubtitleCreation extends React.Component {
 
     return(
     <div>
-      <button onClick={this.createSub}>Create sub</button>
+      <button id='creation-button' onClick={this.createSub}>In Time</button>
       {/* Subtitle Modal */}
       <div id="sub-text" className="modal" style={{display:'none'}}>
 
@@ -140,6 +185,14 @@ class SubtitleCreation extends React.Component {
         </div>
 
       </div>
+
+      {/* Subtitle list div */}
+      <div id='show-subtitles'>
+        Subtitles:
+        <ul id='subtitle-list'>
+        </ul>
+      </div>
+
     </div>
 
     );

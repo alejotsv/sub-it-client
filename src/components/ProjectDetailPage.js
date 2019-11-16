@@ -74,7 +74,7 @@ class ProjectPage extends React.Component {
                 
                 {/* TODO: Get projectID from URL */}
                 < SubtitleCreation projectId='5dc8e4dedc3f1e1899a79483'/>
-                < ShowSubtitles projectId='5dc8e4dedc3f1e1899a79483' />
+                {/* < ShowSubtitles projectId='5dc8e4dedc3f1e1899a79483' /> */}
                 
             </div>
 
