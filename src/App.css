@@ -1,169 +1,185 @@
-.App {
-  text-align: center;
+/***************************
 
+          CSS RESET 
+
+****************************/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/**********************************************************
+                        
+                    HERO HEADER
+
+**********************************************************/
+
+.header {
+  /* Height will always be 95% height of view port */
+  height: 95vh;
+
+  position: relative;
+
+  /* First background is gradient we want on top of background image */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url("./hero.jpg");
+
+  background-size: cover;
+
+  /* So When window is shrinking only bottom will be cropped */
+  background-position: top;
+
+  /* TODO To choose how much of header will be shown */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+
+  /* TODO To Move element, position absolute moves left of div to postion, we move another half to finish centering */
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  /* TODO Fix for animations that cause parent to "shake" */
+  backface-visibility: hidden;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.heading-primary-secondary {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+/* TODO Create an animation */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /* Off screen on left */
+    transform: translateX(-100px);
   }
 
-  #full_back{
-  background: #403B4A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #E7E9BB, #403B4A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #E7E9BB, #403B4A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-ul > li {
-    list-style-type: none;
-    }
-
-    .container_login, .container_register, .container_project, .container_profile{
-      margin-top: 10%;
-      
-    }
-  /* nav p {
-      color: #B4B4C4;
-      font-size: 22px;
-      margin-left: 30%;
-      font-weight: bold;
-      font-family: 'Raleway, "Open Sans", sans-serif';
-    } */
-  .nav_elements {  
-    color: #B4B4C4;
-    font-size: 20px;
-    margin-right: 30%;
-    font-family: 'Raleway, Open Sans, sans-serif';
-  }
-  .button_text{
-    color: #B4B4C4;
-    font-size: 25px;
-    font-family: 'Raleway, Open Sans, sans-serif';
+  80% {
+    /* Move alittle far right */
+    transform: translateX(20px);
   }
 
- .form_text {
-    font-weight: bold;
-    font: 16px Raleway, "Open Sans", sans-serif;
-    color: #32325D
+  100% {
+    opacity: 1;
+    /* Return to  Original position */
+    transform: translateX(0);
   }
-  .form_title_text{
-    font-weight: bold;
-    font: 25px Raleway, "Open Sans", sans-serif;
-    color: #32325D
-  }
-    
-#top_footer > h1{
-  color: #B4B4C4;
-  font: 28px Raleway, "Open Sans", sans-serif;
-  font-weight: bold;
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* Off screen on left */
+    transform: translateX(100px);
   }
 
-li {
-  float: left;
-}
-
-.card-text{
-  color: #B4B4C4;
-  font: 24px Raleway, "Open Sans", sans-serif;
-  font-weight: bold;
-}
-.card-body > h6{
-  color: #B4B4C4;
-  font: 18px Raleway, "Open Sans", sans-serif;
+  80% {
+    /* Move alittle far right */
+    transform: translateX(-20px);
   }
-footer{
-  color: #32325D;
-  font: 14px Raleway, "Open Sans", sans-serif;
+
+  100% {
+    opacity: 1;
+    /* Return to  Original position */
+    transform: translateX(0);
+  }
 }
-#footer{
-  width: 70%;
-  margin-left: 15%;
-}
-#main{
-  margin-top: 100px;
-  background: #403B4A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #E7E9BB, #403B4A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #E7E9BB, #403B4A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
- }
- #main_text{
-    font-weight: bold;
-    font: 50px Raleway, "Open Sans", sans-serif;
-    color: #32325D
- }
-
- #sub_text{
-  font: 18px Raleway, "Open Sans", sans-serif;
-  color: #32325D
- }
-
-
- .jumbotron.mt-5{
-  background: #403B4A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #E7E9BB, #403B4A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #E7E9BB, #403B4A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-color: transparent;
-  border-radius: 0%;
-
- }
- 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-
-.socialMedia{
-  width: 75%;
-}
-.logoIron{
-  width: 30%;
-  border-radius: 10px 10px;
-  border-style: solid;
-  border-width: thin;
-  border : solid 1.5px #B4B4C4;  /* fallback for old browsers */
-   
-}
-
 
 /************************************************
 
-NAVBAR STYLING
+                NAVBAR STYLING
 
 *************************************************/
 
-/* nav{
-  background-color: dodgerblue;
-} */
+.nav-bar {
+  /* background-color: dodgerblue; */
 
-/* .navList {
-
-  list-style-type: none;
-
-  display: flex;
-
-
+  height: 10vh;
 }
 
-.link {
-  text-decoration: none;
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  padding: 0 8px;
+.nav-logo {
+  height: 70px;
+  border-radius: 10%;
+  margin-left: 10px;
+}
+
+.nav-links-list {
+  /* border: 3px solid green; */
+
+  display: flex;
+  list-style: none;
+}
+
+.nav-links-list li {
+  padding: 22px;
+
+  font-size: 1.6rem;
+}
+
+.nav-links {
+  color: black;
+}
+
+/* To Style NavLinks */
+/* TODO HOW TO STYLE NAVLINKS?! */
+
+/* a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
 } */
 
-
-
-
-
+#root > div > header > nav > ul > li > a > span
+{
+  color: white;
+  text-decoration: none;
+}
 /************************************************
 
               DROP ZONE STYLING
@@ -189,7 +205,7 @@ NAVBAR STYLING
 .drop-zone-container.hover {
   transform: scale(0.95);
 
-  background-color: rgb(209,236,241);
+  background-color: rgb(209, 236, 241);
 }
 
 .drop-zone-container:hover {
@@ -201,9 +217,7 @@ NAVBAR STYLING
 }
 
 .hasFile {
-  
-  background-color: rgb(212,237,218);
-
+  background-color: rgb(212, 237, 218);
 }
 
 /************************************************
@@ -221,4 +235,317 @@ NAVBAR STYLING
 /* Removes Loading Screen */
 #pg-viewer > div > div > div {
   display: none;
+}
+
+/************************************************
+
+              LOGIN STYLING
+
+*************************************************/
+.login-container{
+
+  border: 2px solid black;
+
+  display: flex;
+  justify-content: center;
+
+  /* text-align: center; */
+
+}
+
+.login-container__card {
+
+  /* border: 2px solid blue; */
+
+  box-shadow: 4px 4px 5px;
+  border-radius: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 50%;
+  height: 600px;
+
+}
+
+ .login-container__card form {
+
+  /* border: 2px solid green; */
+
+  width: 200px;
+  height: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+ }  
+
+ /************************************************
+
+              LOGIN SIGN UP SWITCH
+
+*************************************************/
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+.user-form__body {
+  /* background: #f6f5f7; */
+  
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  
+  height: 90vh;
+  
+	/* margin: -20px 0 50px; */
+}
+
+.user-form__h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+.user-form__h2 {
+	text-align: center;
+}
+
+.user-form__p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+.user-form__span {
+	font-size: 12px;
+}
+
+.user-form__a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+.user-form__button {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.user-form__button:active {
+	transform: scale(0.95);
+}
+
+.user-form__button:focus {
+	outline: none;
+}
+
+.user-form__button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.user-form__form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+.user-form__input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.user-form__container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+.user-form__form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.user-form__sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.user-form__container.right-panel-active .user-form__sign-in-container {
+	transform: translateX(100%);
+}
+
+.user-form__sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.user-form__container.right-panel-active .user-form__sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.user-form__container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+.overlay {
+	background: #FF416C;
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.user-form__container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+	transform: translateX(-20%);
+}
+
+.user-form__container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
+}
+
+.user-form__container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}
+
+.social-container {
+	margin: 20px 0;
+}
+
+.social-container a {
+	border: 1px solid #DDDDDD;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 40px;
+	width: 40px;
+}
+
+
+ /************************************************
+
+              PROJECT LIST STYLING
+
+*************************************************/
+
+.project-list-container {
+  background-color: grey;
+}
+
+.project-list-container__list {
+
+  list-style: none;
+
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+
+}
+
+.project-list-container__list__list-items {
+
+  margin: 0 15px;
+
+
 }

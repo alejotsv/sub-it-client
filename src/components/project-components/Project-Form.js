@@ -2,7 +2,6 @@ import React from 'react';
 import axios from "axios";
 
 import FileViewer from 'react-file-viewer';
-
 import Dropzone from '../dropzone'
 
 class ProjectForm extends React.Component {

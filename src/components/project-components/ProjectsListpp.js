@@ -86,7 +86,7 @@ class ProjectsList extends React.Component {
 
             // console.log("PROJECTS THAT WILL BE LISTED -------------------- ", projectsInfo);
             const listItems = this.state.projectsOfUser.map((project, i) =>
-                <li key={i}>
+                <li key={i} className="project-list-container__list__list-items">
 
                     {/* Not changing mutating in state array */}
                     {/* Passes info to each component, info is from our array of of objects with video info */}
@@ -106,9 +106,9 @@ class ProjectsList extends React.Component {
 
         return (
 
-            <div className="container_profile">
+            <div className="project-list-container">
 
-                <ul>
+                <ul className="project-list-container__list">
 
                     {/* If user has projects, render the list of projects */}
                     {/* {this.state.projectsOfUser && listItems} */}

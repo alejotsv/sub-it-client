@@ -72,7 +72,7 @@ class Navbar extends Component {
                 <li> <NavLink className="navbar-brand" to="/"></NavLink></li>
                 <li> <NavLink className="navbar-brand" to="/login"><span className="nav_elements">Login</span> </NavLink></li>
                 <li> <NavLink className="navbar-brand" to="/register"> <span className="nav_elements">Register</span></NavLink> </li>
-                
+
                 <li> <NavLink className="navbar-brand" to="/land"> <span className="nav_elements">Land</span></NavLink> </li>
 
             </ul>
