@@ -1,9 +1,11 @@
 import React from 'react';
 // import ReactPlayer from 'react-player';
 import SubtitleCreation from './SubtitleCreation';
-import ShowSubtitles from './ShowSubtitles';
+// import ShowSubtitles from './ShowSubtitles';
+import axios from 'axios';
 
 class ProjectPage extends React.Component {
+    
     state = {
         url: null,
         pip: false,
@@ -16,23 +18,41 @@ class ProjectPage extends React.Component {
         loaded: 0,
         duration: 0,
         playbackRate: 1.0,
-        loop: false
+        loop: false,
+        currentProjectId: '5dc8e4dedc3f1e1899a79483' 
     }
 
-
+    componentDidMount(){
+        let currentProjectId = '5dc8e4dedc3f1e1899a79483';
+        // this.setState({currentProjectId: currentProjectId});
+        axios.get(`${process.env.REACT_APP_API_URL}/project-info/${currentProjectId}`)
+            .then( (response) => {
+                console.log(response);
+            })
+            .catch((err)=> {})
+         
+        }
+    
     playVideo = () => {
         // You can use the play method as normal on your video ref
         this.refs.vidRef.play();
-
+        
     };
-
+    
     pauseVideo = () => {
         // Pause as well
         this.refs.vidRef.pause();
         this.refs.vidRef.currentTime = 0;
     };
-
+    
     render() {
+        
+        let currentProjectId = this.state.currentProjectId;
+
+
+        
+
+        // /project-info/:projectId
 
         return (
 
@@ -73,8 +93,7 @@ class ProjectPage extends React.Component {
                 </div>
                 
                 {/* TODO: Get projectID from URL */}
-                < SubtitleCreation projectId='5dc8e4dedc3f1e1899a79483'/>
-                {/* < ShowSubtitles projectId='5dc8e4dedc3f1e1899a79483' /> */}
+                < SubtitleCreation projectId={currentProjectId}/>
                 
             </div>
 
