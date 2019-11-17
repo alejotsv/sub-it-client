@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 
 import FileViewer from 'react-file-viewer';
-import Dropzone from '../dropzone'
+import Dropzone from '../utility-components/dropzone'
 
 import '../../App.css'
 
@@ -21,6 +21,14 @@ class ProjectForm extends React.Component {
             message: null
         }
 
+    }
+
+    componentDidMount = () => {
+
+        // If not signed in, send them to login page
+        if (!this.props.theUser) {
+            this.props.history.push('/login')
+        }
     }
 
     genericSync(event) {
