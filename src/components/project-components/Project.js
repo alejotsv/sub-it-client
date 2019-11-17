@@ -1,16 +1,3 @@
-//TODO LIST 
-/*
-1. Fill up card with video
-
-
-*/
-
-/*
-
-projectObject is a prop that is recieving an object with information of a video
-
-*/
-
 import React from 'react';
 
 // Import Personal Card Styling
@@ -40,22 +27,22 @@ class Project extends React.Component {
 
                 <div className="card ">
 
-                    <div className="card_video">
+                    {/* <div className="card_video"> */}
 
                         <video
                             ref="vidRef"
-                            src={this.props.projectObject.videoURL} 
+                            src={this.props.projectObject.videoURL}
+                            // myVal={this.props.projectObject.videoTitle}
                             type="video/mp4"
                             onMouseOver={this.hoverplayVideo}
                             onMouseLeave={this.hoverpauseVideo}
                         >
                         </video>
 
-                    </div>
+                    {/* </div> */}
 
-                    <div className="card_title title-white">
+                    <div className="card_title title-black">
 
-                        
                         <p>{this.props.projectObject.videoTitle}</p>
 
                     </div>

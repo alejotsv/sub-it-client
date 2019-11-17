@@ -531,8 +531,8 @@ a:visited {
   border: 1px solid blue;
 
   display: flex;
-  /* align-items: center; */
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
 
 }
 

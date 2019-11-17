@@ -135,19 +135,25 @@ class ProjectForm extends React.Component {
 
                     <br /> <label> Video File: </label>
 
-                    <Dropzone updateParent={this.updateStateFileIfFileAdded.bind(this)} />
 
+                    <Dropzone updateParent={this.updateStateFileIfFileAdded.bind(this)} />
                     <button> Upload! </button>
+                    
+                </form>
+
+                <div>
+
+
+
 
                     {/* Styling is in app.css */}
                     <FileViewer
                         fileType={'mp4'}
                         filePath={this.state.tempFileURL}
 
-                    />
+                    /></div>
 
 
-                </form>
 
                 {/* if the message is not null (basically if there's a message) then show it in this <div> tag */}
                 {this.state.message && <div> {this.state.message} </div>}

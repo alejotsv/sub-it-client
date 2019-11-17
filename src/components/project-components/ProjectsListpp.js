@@ -1,7 +1,7 @@
 import React from 'react';
 import Project from './Project'
 import axios from "axios";
-import { Switch, Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // Import Personal Card Styling AND CONTAINER STYLING
 import '../../ProjectStyles.css'
@@ -11,10 +11,14 @@ class ProjectsList extends React.Component {
     constructor() {
         super();
 
+        // TODO MARCOS WHY DID I NEED THIS
+        this.handleClick = this.handleClick.bind(this);
+
         this.state = {
 
             // Will Contain array of projects that belong to the loggged in user
             projectsOfUser: []
+            
 
         }
 
@@ -23,9 +27,9 @@ class ProjectsList extends React.Component {
     componentDidMount = () => {
 
         // If not signed in, send them to login page
-        // if (!this.props.theUser) {
-        //     this.props.history.push('/login')
-        // }
+        if (!this.props.theUser) {
+            this.props.history.push('/login')
+        }
 
         console.log("MOUNTED PROJECTLIST COMPONENT");
 
@@ -42,6 +46,22 @@ class ProjectsList extends React.Component {
 
     };
 
+    handleClick(project) {
+
+        let theProject =  project;
+        console.log(`CLICKED PROJECT`,theProject)
+
+        // Redirect To Detail Page with url of video
+   
+        this.props.history.push({
+            pathname: `/projectwork`,
+            state: {
+                project: theProject
+            }
+        }
+        );
+
+    }
 
     renderingElements() {
 
@@ -55,12 +75,10 @@ class ProjectsList extends React.Component {
                         What are you waiting for {this.props.theUser.userName} ?  Start creating!
                     </h2>
 
-                    {/* TODO URGENT , THIS BUTTON IS LOGGING ME OUT FOR SOME REASON */}
-
-
                     <NavLink className="navbar-brand" to="/projectForm/">
                         <span className="nav_elements"> Add a Project </span>
                     </NavLink>
+
                 </div>
             )
         }
@@ -72,9 +90,10 @@ class ProjectsList extends React.Component {
 
             // Array @projectInfo : Will have objects with info from each project user currently has (title,url,genre,description)
             const projectsInfo = this.state.projectsOfUser.map(project => {
-
+                // console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', project);
                 return {
 
+                    videoID: project._id,
                     videoTitle: project.title,
                     videoURL: project.videoURL,
                     genre: project.genre,
@@ -86,7 +105,11 @@ class ProjectsList extends React.Component {
 
             // console.log("PROJECTS THAT WILL BE LISTED -------------------- ", projectsInfo);
             const listItems = this.state.projectsOfUser.map((project, i) =>
-                <li key={i} className="project-list-container__list__list-items">
+
+                <li key={i}
+                    className="project-list-container__list__list-items"
+                    onClick={() => this.handleClick(project)}
+                >
 
                     {/* Not changing mutating in state array */}
                     {/* Passes info to each component, info is from our array of of objects with video info */}

@@ -11,23 +11,24 @@
   border-radius: 40px;
   box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  
   cursor: pointer;
   transition: 0.4s;
 
-  background-color: wheat;
+  background-color: whitesmoke;
+
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+
 }
 
-.card .card_video {
-  width: inherit;
-  height: inherit;
-  border-radius: 40px;
-}
-
-.card .card_video video {
+.card video {
   width: inherit;
   height: inherit;
   /* border-radius: 40px; */
-  /* object-fit: cover; */
+  /* object-fit: contain; */
 }
 
 .card .card_title {
