@@ -8,7 +8,7 @@ import LoginClean from './user-components/LoginClean'
 import ProjectsListAlex from './project-components/ProjectsListpp'
 import ProjectForm from './project-components/Project-Form'
 import LandingPage from './LandingPage'
-
+import ProjectPage from './project-components/ProjectPage'
 
 import Login from './Login'
 import ProjectsList from './ProjectsList'
@@ -156,6 +156,7 @@ class Navbar extends Component {
 
                             <Route exact path="/projectForm/" render={props => <ProjectForm {...props} theUser={this.state.currentUser} />} />
                             <Route exact path="/user-dashboard" render={props => <ProjectsListAlex {...props} theUser={this.state.currentUser} />} />
+                            <Route exact path="/projectwork" render={props => <ProjectPage {...props} theUser={this.state.currentUser} />} />
 
                         </div>
 

@@ -455,12 +455,13 @@ a:visited {
 
 .overlay {
   background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  /* background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c); */
+  background: linear-gradient(to right, #6e453e, #8a41ff);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
   color: #ffffff;
+  
   position: relative;
   left: -100%;
   height: 100%;
