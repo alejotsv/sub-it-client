@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 
 // THIS IS FOR MOCK UP , MUST ALSO DELETE SWITCH ROUTER BELOW AND USE NAVBAR CLEAN
-import './AppCopy.css' ;  
+// import './AppCopy.css' ;  
 
 import NavbarClean from './components/NavbarClean'
 import NavbarStyled from './components/NavbarCSSd'
@@ -29,10 +29,10 @@ class App extends Component {
       <div>
 
         {/* For mockup */}
-        <NavbarClean />
+        {/* <NavbarClean /> */}
 
         {/* Persistant Navbar */}
-        {/* <NavbarStyled /> */}
+        <NavbarStyled />
 
         {/* <Header/> */}
 
