@@ -1,5 +1,3 @@
-// edit.component.js
-
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -15,35 +13,62 @@ export default class Update extends Component {
       project_language: '',
     }
   }
-
+  
   componentDidMount() {
-    // const idPro = localStorage.getItem('projId')
-    // const Id = localStorage.getItem('currentUserId');
-    const proj = {
-      project_title: this.state.project_title,
-      project_genre: this.state.project_genre,
-      project_description: this.state.project_description,
-      project_language: this.state.project_language,
-    };
-    const idPro = localStorage.getItem('projId')
-    axios.put(`/project/${idPro}/updateProject`, { proj })
-    .then(res => {
-      this.setState({proj})
-    })
-      
-    }
+    const theTitle = localStorage.getItem('title')
+    const theGenre = localStorage.getItem('genre')
+    const theDescription = localStorage.getItem('description')
+    const theLanguage = localStorage.getItem('language')
+              this.setState({ 
+                project_title: theTitle, 
+                project_genre: theGenre, 
+                project_description: theDescription, 
+                project_Language: theLanguage, 
+            })
+            this.onChangeTitle = this.onChangeTitle.bind(this);
+            this.onChangeGenre = this.onChangeGenre.bind(this);
+            this.onChangeDescription = this.onChangeDescription.bind(this);
+            this.onChangeLanguage = this.onChangeLanguage.bind(this);
+            this.onSubmit = this.onSubmit.bind(this); 
+ }
 
-    handleChange = e => {  
-      this.setState({name : e.target.value })
-          }
+ onChangeTitle(e) {
+  this.setState({
+    project_title: e.target.value
+  });
+}
+onChangeGenre(e) {
+  this.setState({
+    project_genre: e.target.value
+  })  
+}
+onChangeDescription(e) {
+  this.setState({
+    project_description: e.target.value
+  })
+}
+onChangeLanguage(e) {
+  this.setState({
+    project_language: e.target.value
+  })
+}
   
   onSubmit(e) {
     e.preventDefault();
-    
-      
 
-    this.props.history.push('/dashboard');
+    const obj = {
+      title: this.state.project_title,
+      genre: this.state.project_genre,
+      description: this.state.project_description,
+      language: this.state.project_language,
+    };
 
+    const idPro = localStorage.getItem('projId')
+    axios.put(`${process.env.REACT_APP_API_URL}/project/${idPro}/updateProject`, obj)
+        .then(res => console.log(res.data));
+
+    const Id = localStorage.getItem('currentUserId');
+      this.props.history.push(`/dashboard/${Id}`);
     }
  
   render() {
@@ -57,8 +82,9 @@ export default class Update extends Component {
                       type="text" 
                       name="title"
                       className="form-control" 
-                      // value={this.state.project_title}
-                      onChange={ e => this.handleChange(e)}
+                      value={this.state.project_title}
+                      // onChange={ e => this.handleChange(e)}
+                      onChange={this.onChangeTitle}
                       />
                 </div>
                 <div className="form-group">
@@ -66,8 +92,9 @@ export default class Update extends Component {
                     <input type="text" 
                        name="genre"
                       className="form-control"
-                      // value={this.state.project_genre}
-                      onChange={ e => this.handleChange(e)}
+                      value={this.state.project_genre}
+                      // onChange={ e => this.handleChange(e)}
+                      onChange={this.onChangeGenre}
                       />
                 </div>
                 <div className="form-group">
@@ -75,8 +102,9 @@ export default class Update extends Component {
                     <textarea type="text" 
                       name="description"
                       className="form-control"
-                      // value={this.state.project_description}
-                      onChange={ e => this.handleChange(e)}
+                      value={this.state.project_description}
+                      // onChange={ e => this.handleChange(e)}
+                      onChange={this.onChangeDescription}
                       />
                 </div>
                 <div className="form-group">
@@ -84,9 +112,9 @@ export default class Update extends Component {
                     <input type="text" 
                       name="language"
                       className="form-control"
-                      // value={this.state.project_language}
-                      
-                      onChange={ e => this.handleChange(e)}
+                      value={this.state.project_language}
+                      onChange={this.onChangeLanguage}
+                      // onChange={ e => this.handleChange(e)}
                       />
                 </div>
                 <div className="form-group">

@@ -9,6 +9,7 @@
     "file-server": "^2.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-file-viewer": "^1.2.1",
     "react-player": "^1.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
