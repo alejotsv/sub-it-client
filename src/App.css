@@ -14,16 +14,10 @@ ul > li {
     }
 
     .container_login, .container_register, .container_project, .container_profile{
-      margin-top: 15%;
+      margin-top: 5%;
       
     }
-  /* nav p {
-      color: #B4B4C4;
-      font-size: 22px;
-      margin-left: 30%;
-      font-weight: bold;
-      font-family: 'Raleway, "Open Sans", sans-serif';
-    } */
+  
   .nav_elements {  
     color: #B4B4C4;
     font-size: 20px;
@@ -133,6 +127,8 @@ footer{
   border : solid 1.5px #B4B4C4;  /* fallback for old browsers */
    
 }
+
+/* input file styling */
 
 
 /************************************************

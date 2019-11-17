@@ -56,6 +56,7 @@ class ProjectsList extends Component {
       localStorage.setItem('genre', proj.genre);
       localStorage.setItem('description', proj.description);
       localStorage.setItem('language', proj.language);
+      
       // const theProj = localStorage.getItem('projId')
       return (
         <div className= "container_profile" key={proj._id}>
