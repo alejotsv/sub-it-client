@@ -8,8 +8,8 @@ import Login from './components/Login'
 import Register from './components/Register'
 // import Prueba from './components/Prueba'
 import ProjectsList from './components/ProjectsList'
-// import Project_form from './components/Project_form';
-// import Home from './components/Home';
+import Projectform from './components/Project_form';
+import Update from './components/Update';
 import ProjectDetails from './components/ProjectDetailPage';
 
 class App extends Component {
@@ -23,8 +23,9 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route path="/dashboard" component={ProjectsList} />
-            <Route exact path="/project/workingproject" component={ProjectDetails} />
-            {/* <Route exact path="/project" component={Project_form} /> */}
+            <Route path="/project" component={ProjectDetails} />
+            <Route path="/update" component={Update} />
+            <Route exact path="/form" component={Projectform} />
           </div>
         </div>
       </Router>
@@ -34,56 +35,3 @@ class App extends Component {
 
 export default App
 
-// import React from 'react';
-// import './App.css';
-
-// import Navbar from './components/Navbar';
-
-
-
-// class App extends React.Component {
-
-
-//   render() {
-
-
-
-//     return (
-//       <div >
-
-//         <Navbar />
-
-  
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
-// import React from 'react';
-// import './App.css';
-
-// import Navbar from './components/Navbar';
-
-
-
-// class App extends React.Component {
-
-
-//   render() {
-
-
-
-//     return (
-//       <div >
-
-//         <Navbar />
-
-  
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;

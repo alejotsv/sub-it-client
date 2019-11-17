@@ -56,7 +56,7 @@ class ProjectPage extends React.Component {
 
         return (
 
-            <div>
+            <div className= "container_profile">
 
                 <div id='video-container'>
 
