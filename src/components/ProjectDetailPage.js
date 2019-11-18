@@ -1,13 +1,15 @@
 import React from 'react';
 // import ReactPlayer from 'react-player';
 import SubtitleCreation from './SubtitleCreation';
+import VideoPlayer from './VideoPlayer';
 // import ShowSubtitles from './ShowSubtitles';
 import axios from 'axios';
 
 class ProjectPage extends React.Component {
     
     state = {
-        url: null,
+        videoURL: '',        
+        ready: false,
         pip: false,
         playing: true,
         controls: false,
@@ -19,81 +21,74 @@ class ProjectPage extends React.Component {
         duration: 0,
         playbackRate: 1.0,
         loop: false,
-        currentProjectId: '5dc8e4dedc3f1e1899a79483' 
+        currentProjectId: '',        
     }
-
-    componentDidMount(){
-        let currentProjectId = '5dc8e4dedc3f1e1899a79483';
-        // this.setState({currentProjectId: currentProjectId});
+    
+    getIdFromUrl = () => {
+        let path = window.location.pathname;
+        let parts = path.split('/');
+        let projectId = parts.pop() || parts.pop(); 
+        return projectId;       
+    }
+    
+    UNSAFE_componentWillMount(){
+        let currentProjectId = this.getIdFromUrl();
+        console.log('my project ID is: '+ currentProjectId);
+        this.setState({currentProjectId: currentProjectId});
         axios.get(`${process.env.REACT_APP_API_URL}/project-info/${currentProjectId}`)
-            .then( (response) => {
-                console.log(response);
+            .then( (response) => {                
+                this.setState({ videoURL: response.data.videoURL });
             })
             .catch((err)=> {})
          
         }
+
+    componentDidMount(){
+        this.state.ready = true;
+    }
+
+
+        // https://res.cloudinary.com/alejotsv/video/upload/v1572146282/videoplayback_dznrfa.mp4
     
-    playVideo = () => {
-        // You can use the play method as normal on your video ref
-        this.refs.vidRef.play();
+    // playVideo = () => {
+    //     // You can use the play method as normal on your video ref
+    //     this.refs.vidRef.play();
         
-    };
+    // };
     
-    pauseVideo = () => {
-        // Pause as well
-        this.refs.vidRef.pause();
-        this.refs.vidRef.currentTime = 0;
-    };
+    // pauseVideo = () => {
+    //     // Pause as well
+    //     this.refs.vidRef.pause();
+    //     this.refs.vidRef.currentTime = 0;
+    // };
     
     render() {
         
-        let currentProjectId = this.state.currentProjectId;
-
-
+        // 
+        let videoURL = this.state.videoURL;        
+        let video;
         
-
-        // /project-info/:projectId
+        if (this.state.ready){
+            video = < VideoPlayer videoURL={videoURL} />;
+        } else {
+            video = 'Loading...';
+        }      
+        
 
         return (
 
             <div className= "container_profile">
 
-                <div id='video-container'>
-
-                    {/* <video
-                        id="project-Being-Worked-On"
-                        ref="vidRef"
-                        src="https://assets.polestar.com/video/test/polestar-1_09.mp4"
-                        type="video/mp4"
-                        onMouseOver={this.playVideo}
-                        onMouseLeave={this.pauseVideo}
-                    /> */}
-
+                {video}
+                {/* <div id='video-container'>
                     <video id="video" crossOrigin="anonymous" autoPlay controls preload="metadata">
-                    
-                    {/* TODO: Get project video URL from axios */}
-                    <source src="https://res.cloudinary.com/alejotsv/video/upload/v1572146282/videoplayback_dznrfa.mp4" type="video/mp4" />
+                    <source src={this.state.videoURL} />
                     <track id="my-subs" label="English" kind="subtitles" srcLang="en" src="" default/> 
                     </video>
-
-                    <div>
-                        
-
-                        {/* Button to work with subtitles (Add proper functions above ) */}
-                        {/* <button onClick={this.playVideo}>
-                            Play!
-                        </button>
-
-                        <button onClick={this.pauseVideo}>
-                            Pause!
-                    </button> */}
-
-                    </div>
-                    
-                </div>
+                </div> */}
                 
                 {/* TODO: Get projectID from URL */}
-                < SubtitleCreation projectId={currentProjectId}/>
+                < SubtitleCreation projectId={this.state.currentProjectId}/>
                 
             </div>
 

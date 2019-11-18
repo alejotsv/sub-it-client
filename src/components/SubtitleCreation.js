@@ -29,8 +29,7 @@ class SubtitleCreation extends React.Component {
     }
   
   listSubtitles = () => {
-    let tracks = document.querySelector('video').textTracks;
-    let video = document.getElementById('video');
+    let tracks = document.querySelector('video').textTracks;    
     let subtitleList = document.getElementById('subtitle-list');
     let projectSubtitles = this.state.subtitles;
     
