@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import the service file since we need it to send (and get) the data to(from) server
 import service from '../api/service';
-import 'bulma'
+
 
 
 class Projectform extends Component {
@@ -60,23 +60,10 @@ class Projectform extends Component {
          
                 
     }  
-
-  
+ 
         
     render() {
-      function blah(){
-        const fileInput = document.querySelector('#file-js-example input[type=file]');
-        fileInput.onChange = () => {
-          if (fileInput.files.length > 0) {
-            const fileName = document.querySelector('#file-js-example .file-name');
-            fileName.textContent = fileInput.files[0].name;
-          }
-        }
-      }
-  
-  
-   
-    
+          
         return (
         
             <div className="container_project">
@@ -84,31 +71,12 @@ class Projectform extends Component {
                       <div className="col-md-6 mt-5 mx-auto">
                       <form noValidate onSubmit={e => this.handleSubmit(e)} crossOrigin="anonymous">
                       <h1 className="h3 mb-3 font-weight-normal"></h1>
-
-                           
-<div id="file-js-example" className="file is-centered is-dark has-name">
-<label className="file-label">
-  <input className="file-input" type="file" name="resume" onChange={(e) => this.blah()} 
-  onChange={(e) => this.handleFileUpload(e)}/>
-  <span className="file-cta">
-    <span className="file-icon">
-      <i className="fas fa-upload"></i>
-    </span>
-    <span className="file-label">
-      Choose a file…
-    </span>
-  </span>
-  <span className="file-name">
-    No file uploaded
-  </span>
-</label>
-</div>
-         {/* <div className="custom-file">
+         <div className="custom-file">
             <input type="file" className="custom-file-input" id="inputGroupFile01" 
                  aria-describedby="inputGroupFileAddon01" onChange={(e) => this.handleFileUpload(e)} />
                 <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
-                        </div>  */}
-                        
+                        </div> 
+                        <br/>
                         <br/>
                          <div className="form-group">
                            <label htmlFor="title"><span className='form_text'>Title</span></label>

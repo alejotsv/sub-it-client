@@ -17,7 +17,7 @@ class ProjectsList extends Component {
   }
        componentDidMount() {
         const TheId = localStorage.getItem('currentUserId');
-        ;(async () => {
+        (async () => {
           const response = await axios.get(`${process.env.REACT_APP_API_URL}/dashboard/${TheId}`)
           this.setState({ projects: response.data })
           // console.log(this.state.projects[0]['title'])
@@ -37,17 +37,18 @@ class ProjectsList extends Component {
       }
        
   
-  
-  
   renderingElements(){
     // const uId = localStorage.getItem('currentUserId');
     if(this.state.projects.length === 0){
-      return (<div>
-                 <h2>
-                 What are you waiting for creating a project?
-                </h2>
-               <a href={`/form`} className="btn btn-dark">Add a project</a>
-            </div>)
+      return (<div className="container_profile" style={{marginTop: "5%"}}>
+                 <h4 className="main_text">
+                   Hey, {this.state.userName}, add a project!
+                 </h4>
+              <a href={`/form`}>
+                <img src="/plusCircular.png" id="plusSign"/>
+               </a>
+              
+              </div>)
     }
     else{
     const newArr = (this.state.projects).map((proj, item) => {
@@ -56,11 +57,11 @@ class ProjectsList extends Component {
       localStorage.setItem('genre', proj.genre);
       localStorage.setItem('description', proj.description);
       localStorage.setItem('language', proj.language);
-      
-      // const theProj = localStorage.getItem('projId')
       return (
-        <div className= "container_profile" key={proj._id}>
-        <div className="card" style={{width:450}}>
+  
+     <div className="container_profile" key={proj._id} >
+        <div className="card" style={{width:200, marginBottom: "50%"}}>
+           <Link to={`/project/${proj._id}`} className="btn btn-dark" style={{backgroundColor: "black"}}>See full project</Link>
            <div className="embed-responsive embed-responsive-4by3">
             <iframe width="100%" height="100%" src={proj.videoURL} frameBorder="0" 
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
@@ -68,19 +69,27 @@ class ProjectsList extends Component {
             </div>
               <div className="card-body">
                 <h4 className="card-title">{proj.title}</h4>
-                <h6 className="card-text">basic category: {proj.genre}</h6>
-                <h6 className="card-text">brief reference: {proj.description}</h6>
-                <h6 className="card-text">target language: {proj.language}</h6>
-                  {/* TODO: Get project ID as variable to replace 'workingproject' */}
-                  
-              <Link to={`/project/${proj._id}`} className="btn btn-dark">Full project</Link>
-              <Link to={`/update`} className="btn btn-secondary">Update project</Link>
-              <button onClick={this.delete} className="remove-btn btn btn-danger">Delete</button>
-               </div>
-              </div>
-              <div><Link to={"/form"} className="btn btn-dark">Add a project</Link></div>
-         </div>
-        
+                <h6 className="card-title">genre: {proj.genre}</h6>
+                <h6 className="card-title">description: {proj.description}</h6>
+                <h6 className="card-title">language: {proj.language}</h6>
+                            
+              <Link to={`/update`}>
+                <img src="/edit.png" id="Edit"/>
+              </Link>
+
+              <Link onClick={this.delete}>
+                <img src="/delete.png" id="Delete"/>
+              </Link>
+              
+              {/* <button onClick={this.delete} className="remove-btn btn btn-danger">Delete</button> */}
+              
+            </div>         
+          </div>     
+                     
+     </div>
+       
+  
+
               )
     })
         return newArr
@@ -90,13 +99,18 @@ class ProjectsList extends Component {
  render() {
     
       return (
-        <div className="container_profile">
-            <div><h2>Hello, {this.state.userName}!</h2></div>
-             <div>
-                 {this.renderingElements()}
-             </div>
-        </div>
-    )
+        
+             <div className="container_profile">
+                 {/* <h2>New project <a href={`/form`}>
+                     <img src="/plusCircular.png" id="plusSign"/>
+                  </a></h2>  */}
+                  
+                <div className="flex-container">
+                  {this.renderingElements()}
+                </div>
+              </div>
+           
+         )
    
   }
 }
