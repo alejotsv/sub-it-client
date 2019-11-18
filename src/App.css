@@ -290,3 +290,33 @@ NAVBAR STYLING
   margin: 0 15px;
   margin-right: 40px;
 } */ 
+
+/* video styling */
+
+.container_video{
+  margin-top: 20%;
+  display: flex;
+  width: 100%;
+}
+
+.container_video > div{
+  margin: 10px;
+  text-align: center;
+ }
+
+ .creationSub{
+  margin-top: 20%;
+  display: flex;
+  width: 100%;
+ }
+
+ .creationSub > div{
+  margin: 10px;
+  text-align: center;
+ }
+
+#show-subtitles{
+  
+  /* background-color: blue; */
+  margin-top: 5%
+}

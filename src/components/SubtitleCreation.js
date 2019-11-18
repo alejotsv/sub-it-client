@@ -87,7 +87,7 @@ class SubtitleCreation extends React.Component {
         let cue = new VTTCue(inTime,null,'');      
         tracks[0].addCue(cue);    
         this.setState({subInit: true });
-        button.innerHTML = 'Out Time';
+        button.innerHTML = 'Out';
       // if inTime has already been defined, set cue endTime to current video time and pause video
       } else {
         let outTime = video.currentTime;
@@ -97,7 +97,7 @@ class SubtitleCreation extends React.Component {
         this.setState({subInit: false });
         // call function to display modal and enter text subtitle
         this.completeSub();
-        button.innerHTML = 'In Time';      
+        button.innerHTML = 'In';      
       }
     };
 
@@ -189,8 +189,11 @@ class SubtitleCreation extends React.Component {
   render() {
 
     return(
-    <div>
-      <button id='creation-button' onClick={this.createSub}>In Time</button>
+    <div className="creationSub">
+      <div>
+       <button id='creation-button' className="btn btn-info" onClick={this.createSub}>In</button>
+      </div>
+     
       {/* Subtitle Modal */}
       <div id="sub-text" className="modal" style={{display:'none'}}>
 
@@ -201,17 +204,40 @@ class SubtitleCreation extends React.Component {
             <button id="save-text-btn" onClick={this.saveSubtitle}>Save</button>
             <button id="cancel-btn" onClick={this.cancelSubtitle}>Cancel</button>
         </div>
-
       </div>
+
+     {/* Bootstrap modal */}
+{/* <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="sub-text">
+      <div class="modal-header" id="sub-modal">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add the subtitle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel-btn" class="btn btn-secondary" data-dismiss="modal" onClick={this.cancelSubtitle}>Close</button>
+        <button type="button" id="save-text-btn" class="btn btn-primary" onClick={this.saveSubtitle}>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> */}
 
       {/* Subtitle list div */}
       <div id='show-subtitles'>
         Subtitles:
         <ul id='subtitle-list'>
         </ul>
+        <div> 
+          <button id='download-button' onClick={this.downloadSub} className="btn btn-success">Download subtitles</button>
+        </div>
       </div>
 
-      <button id='download-button' onClick={this.downloadSub}>Download subtitles</button>
+     
 
     </div>
 

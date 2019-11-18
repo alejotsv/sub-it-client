@@ -77,9 +77,9 @@ class ProjectPage extends React.Component {
 
         return (
 
-            <div className= "container_profile">
+            <div className="container_video">
 
-                {video}
+               <div>{video}</div>  
                 {/* <div id='video-container'>
                     <video id="video" crossOrigin="anonymous" autoPlay controls preload="metadata">
                     <source src={this.state.videoURL} />
@@ -88,7 +88,7 @@ class ProjectPage extends React.Component {
                 </div> */}
                 
                 {/* TODO: Get projectID from URL */}
-                < SubtitleCreation projectId={this.state.currentProjectId}/>
+               <div>< SubtitleCreation projectId={this.state.currentProjectId}/></div> 
                 
             </div>
 
