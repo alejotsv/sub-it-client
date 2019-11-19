@@ -294,7 +294,8 @@ NAVBAR STYLING
 /* video styling */
 
 .container_video{
-  margin-top: 20%;
+  margin-top: 15%;
+  margin-left: -10%;
   display: flex;
   width: 100%;
 }
@@ -316,13 +317,22 @@ NAVBAR STYLING
  }
 
 #show-subtitles{
-  
-  /* background-color: blue; */
-  margin-top: 5%
+  background: #232526;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin-top: -15%;
+  width: "600px"
 }
 
+
+  #subtitle-list{
+    color: white;
+    list-style: none;
+  }
+
 #video{
-  width: 300px
+  width: 400px;
+  border: 0.5px solid black;
 }
 
 /************************************************
@@ -559,4 +569,24 @@ NAVBAR STYLING
   margin: 0 5px;
   height: 40px;
   width: 40px;
+}
+
+/* adding styling to the modal */
+
+.modal-content{
+  background: #232526;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.modal-header > h4{
+  text-align: center;
+  color: white;
+}
+
+.modal-body > textarea {
+background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+color: white
 }

@@ -33,8 +33,15 @@ class ProjectsList extends Component {
     axios.delete(`${process.env.REACT_APP_API_URL}/project/${idpro}/deleteProject`)
         .then(console.log('Deleted'))
         .catch(err => console.log(err))
-        
-      }
+        }
+
+      refreshPage = e => {
+          window.location.reload(false);
+        }
+
+        componentWillUnmount(){
+           
+        }
        
   
   renderingElements(){
@@ -42,7 +49,7 @@ class ProjectsList extends Component {
     if(this.state.projects.length === 0){
       return (<div className="container_profile" style={{marginTop: "5%"}}>
                  <h4 className="main_text">
-                   Hey, {this.state.userName}, add a project!
+                   {this.state.userName}, add a project!
                  </h4>
               <a href={`/form`}>
                 <img src="/plusCircular.png" id="plusSign"/>
@@ -58,7 +65,7 @@ class ProjectsList extends Component {
       localStorage.setItem('description', proj.description);
       localStorage.setItem('language', proj.language);
       return (
-  
+      
      <div className="container_profile" key={proj._id} >
         <div className="card" style={{width:200, marginBottom: "50%"}}>
            <Link to={`/project/${proj._id}`} className="btn btn-dark" style={{backgroundColor: "black"}}>See full project</Link>
@@ -77,7 +84,7 @@ class ProjectsList extends Component {
                 <img src="/edit.png" id="Edit"/>
               </Link>
 
-              <Link onClick={this.delete}>
+              <Link to={`#`}onClick={this.delete}>
                 <img src="/delete.png" id="Delete"/>
               </Link>
               
@@ -87,10 +94,8 @@ class ProjectsList extends Component {
           </div>     
                      
      </div>
-       
-  
-
-              )
+    
+       )
     })
         return newArr
     }
@@ -99,17 +104,18 @@ class ProjectsList extends Component {
  render() {
     
       return (
-        
+             
              <div className="container_profile">
                  {/* <h2>New project <a href={`/form`}>
                      <img src="/plusCircular.png" id="plusSign"/>
                   </a></h2>  */}
                   
                 <div className="flex-container">
+                  
                   {this.renderingElements()}
                 </div>
               </div>
-           
+              
          )
    
   }
