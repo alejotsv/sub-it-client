@@ -195,19 +195,20 @@ class SubtitleCreation extends React.Component {
       </div>
      
       {/* Subtitle Modal */}
-      <div id="sub-text" className="modal" style={{display:'none'}}>
+      {/* <div id="sub-text" className="modal" style={{display:'none'}}> */}
 
         {/* Modal content */}
-        <div id="sub-modal">
+        {/* <div id="sub-modal">
             <span id="close" onClick={this.cancelSubtitle}>&times;</span>
             <textarea id="this-sub-text" rows="2" cols="50" maxLength="80"></textarea>
             <button id="save-text-btn" onClick={this.saveSubtitle}>Save</button>
             <button id="cancel-btn" onClick={this.cancelSubtitle}>Cancel</button>
         </div>
-      </div>
+      </div> */}
 
      {/* Bootstrap modal */}
-{/* <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="sub-modal" 
+tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content" id="sub-text">
       <div class="modal-header" id="sub-modal">
@@ -225,7 +226,7 @@ class SubtitleCreation extends React.Component {
       </div>
     </div>
   </div>
-</div> */}
+</div>
 
       {/* Subtitle list div */}
       <div id='show-subtitles'>
