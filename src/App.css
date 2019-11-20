@@ -11,13 +11,42 @@
 ul > li {
     list-style-type: none;
     }
-    .container_login, .container_register, .container_project, .container_profile{
+    .container_login, .container_register, .container_project, .container_profile {
       margin-top: 10%;
       }
 
-    .container_profile{
-      margin-left: 5%;
+      .card.rounded-circle{
+        background: #232526;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        float: right;
+        opacity: 0.8;
+      }
+
+    .container_dashboard{
+     background-image: url('/backDashboard.jpg');
+     width: 200%;
+     height: 1200px;
+     background-repeat: no-repeat;
+     background-size: auto;
+     background-size:cover;
+     opacity: 0.45;
+     position: relative
     }
+
+    .container_dashboard_1{
+      background: #1F1C2C;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to top, #928DAB, #1F1C2C);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to top, #928DAB, #1F1C2C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      width: 200%;
+      height: 1200px;
+      background-repeat: no-repeat;
+      background-size: auto;
+      background-size:cover;
+      opacity: 0.8;
+      position: relative
+    
+  }
 
     .flex-container{
      display: flex;
@@ -143,11 +172,11 @@ footer{
 .logoIron{
   width: 30%;
   border-radius: 10px 10px;
-  border-style: solid;
-  border-width: thin;
-  border : solid 1.5px #B4B4C4;  /* fallback for old browsers */
-   
+  opacity: 0.45
 }
+
+
+
 
 /* input file styling */
 
@@ -328,8 +357,10 @@ NAVBAR STYLING
   #subtitle-list{
     color: white;
     list-style: none;
-    width: 700px;    
+    width: 700px;   
+    opacity: 0.8; 
   }
+
 
   .each-sub > td{
     padding: 5px;
@@ -340,9 +371,9 @@ NAVBAR STYLING
   border: 0.5px solid black;
 }
 
-#download-button {
+#download-button, #creation-button {
   margin-top: 100px;
-
+  opacity: 0.7;
 }
 
 /************************************************

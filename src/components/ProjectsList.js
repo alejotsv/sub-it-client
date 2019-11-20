@@ -35,27 +35,34 @@ class ProjectsList extends Component {
         .catch(err => console.log(err))
         }
 
-      refreshPage = e => {
-          window.location.reload(false);
-        }
-
-        componentWillUnmount(){
-           
-        }
+      
        
   
   renderingElements(){
     // const uId = localStorage.getItem('currentUserId');
     if(this.state.projects.length === 0){
-      return (<div className="container_profile" style={{marginTop: "5%"}}>
-                 <h4 className="main_text">
-                   {this.state.userName}, add a project!
-                 </h4>
-              <a href={`/form`}>
-                <img src="/plusCircular.png" id="plusSign"/>
-               </a>
-              
-              </div>)
+
+      return (
+        <div className="container_dashboard" style={{marginTop: "-2%"}}>
+                <div style={{marginRight: "6%", marginTop: "9%"}}>
+                <div className="card bg-secondary rounded-circle" >
+                  <div className="card-body text-center">
+                    <div className="card bg-secondary rounded-circle" >
+                      <div className="card-body text-center">
+                       <div className="card bg-secondary rounded-circle" >
+                         <div className="card-body text-center">
+                         <p className="card-text">Welcome {this.state.userName}!</p>
+                         <Link to={`/form`} className="btn btn-dark">Add project</Link> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                   
+                 </div>
+                 </div>
+                 </div>
+                 )
     }
     else{
     const newArr = (this.state.projects).map((proj, item) => {
@@ -66,8 +73,8 @@ class ProjectsList extends Component {
       localStorage.setItem('language', proj.language);
       return (
       
-     <div className="container_profile" key={proj._id} >
-        <div className="card" style={{width:200, marginBottom: "50%"}}>
+     <div className="container_dashboard_1" style={{marginTop: "-2%"}} key={proj._id} >
+        <div className="card" style={{width:200, marginLeft: "4%", marginTop: "4%"}}>
            <Link to={`/project/${proj._id}`} className="btn btn-dark" style={{backgroundColor: "black"}}>See full project</Link>
            <div className="embed-responsive embed-responsive-4by3">
             <iframe width="100%" height="100%" src={proj.videoURL} frameBorder="0" 
@@ -76,9 +83,9 @@ class ProjectsList extends Component {
             </div>
               <div className="card-body">
                 <h4 className="card-title">{proj.title}</h4>
-                <h6 className="card-title">genre: {proj.genre}</h6>
-                <h6 className="card-title">description: {proj.description}</h6>
-                <h6 className="card-title">language: {proj.language}</h6>
+                <h5 className="card-title">Genre: {proj.genre}</h5>
+                <h5 className="card-title">Description: {proj.description}</h5>
+                <h5 className="card-title">Language: {proj.language}</h5>
                             
               <Link to={`/update`}>
                 <img src="/edit.png" id="Edit"/>
@@ -107,7 +114,7 @@ class ProjectsList extends Component {
              
              <div className="container_profile">
                  {/* <h2>New project <a href={`/form`}>
-                     <img src="/plusCircular.png" id="plusSign"/>
+                     
                   </a></h2>  */}
                   
                 <div className="flex-container">

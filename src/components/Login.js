@@ -97,7 +97,7 @@ class Login extends Component {
               <button
                 type="submit"
                 className="btn btn-lg btn-dark btn-block"
-              >
+                style={{opacity: "0.8"}}>
                 <span className='button_text'>Sign in</span>
               </button>
             </form>

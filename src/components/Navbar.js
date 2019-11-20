@@ -49,7 +49,7 @@ class Navbar extends Component {
     )
 
     return (
-      <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-dark">
+      <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-dark" style={{opacity: "0.8"}}>
          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
              <span className="navbar-toggler-icon"></span>
          </button>

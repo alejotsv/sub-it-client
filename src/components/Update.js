@@ -120,7 +120,7 @@ onChangeLanguage(e) {
                 <div className="form-group">
                     <input type="submit" 
                       value="Edit Project" 
-                      className="btn btn-lg btn-dark btn-block"/>
+                      className="btn btn-lg btn-dark btn-block" style={{opacity: "0.8"}}/>
                 </div>
             </form>
         </div>

@@ -77,7 +77,7 @@ class Register extends Component {
               </div>
               <button type="submit"
                 className="btn btn-lg btn-dark btn-block"
-              >
+                style={{opacity: "0.8"}}>
                <span className='button_text'>Register</span> 
               </button>
             </form>

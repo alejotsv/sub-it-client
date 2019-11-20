@@ -208,7 +208,7 @@ class SubtitleCreation extends React.Component {
     return(
     <div>
       <div>
-         <button id='creation-button' className="btn btn-info" onClick={this.createSub}>In Time</button>
+         <button id='creation-button' className="btn btn-secondary" onClick={this.createSub}>In Time</button>
       </div>
     <div className="creationSub">
           
@@ -259,7 +259,7 @@ class SubtitleCreation extends React.Component {
         </table>
           
          </div>
-          <button id='download-button' onClick={this.downloadSub} className="btn btn-success">Download subtitles</button>
+          <button id='download-button' onClick={this.downloadSub} className="btn btn-secondary">Download subtitles</button>
 
 
     </div>

@@ -6,7 +6,7 @@ function Footer() {
       <div id="footer">
           
         <div className="card-deck">
-  <div className="card bg-dark">
+  <div className="card bg-dark" style={{opacity: "0.8"}}>
     <div className="card-body text-center">
       <p className="card-text">Upload your footage</p>
       <h6>Upload the video you want to subtitle or
@@ -14,7 +14,7 @@ function Footer() {
       
     </div>
   </div>
-  <div className="card bg-dark">
+  <div className="card bg-dark" style={{opacity: "0.8"}}>
     <div className="card-body text-center">
       <p className="card-text">Type and time your subtitles</p>
       <h6>Transcribe the text you want and space your subtitle 
@@ -22,7 +22,7 @@ function Footer() {
       
     </div>
   </div>
-  <div className="card bg-dark">
+  <div className="card bg-dark" style={{opacity: "0.8"}}>
     <div className="card-body text-center">
       <p className="card-text">Share your video</p>
       <h6>Download your subtitled video to share on social media</h6>

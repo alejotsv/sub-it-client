@@ -122,7 +122,7 @@ class Projectform extends Component {
                               onChange={ e => this.handleChange(e)}
                             />
                           </div>
-                          <button type="submit" className="btn btn-lg btn-dark btn-block">
+                          <button type="submit" className="btn btn-lg btn-dark btn-block" style={{opacity: "0.8"}}>
                             <span className='button_text'> Save your project</span>
                           </button>
                         </form>
