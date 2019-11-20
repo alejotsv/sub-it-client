@@ -328,11 +328,21 @@ NAVBAR STYLING
   #subtitle-list{
     color: white;
     list-style: none;
+    width: 700px;    
+  }
+
+  .each-sub > td{
+    padding: 5px;
   }
 
 #video{
-  width: 400px;
+  width: 600px;
   border: 0.5px solid black;
+}
+
+#download-button {
+  margin-top: 100px;
+
 }
 
 /************************************************
@@ -590,3 +600,4 @@ background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-2
 background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 color: white
 }
+

@@ -30,7 +30,7 @@ class SubtitleCreation extends React.Component {
   
   listSubtitles = () => {
     let tracks = document.querySelector('video').textTracks;    
-    let subtitleList = document.getElementById('subtitle-list');
+    let subtitleList = document.getElementById('sub-tbody');
     let projectSubtitles = this.state.subtitles;
     
     // Loop through array
@@ -44,19 +44,27 @@ class SubtitleCreation extends React.Component {
       console.log(tracks[0]);
 
       // Display existing subtitles in DOM
-      subtitleList.innerHTML += `<li>${sub.text} || ${sub.inTimeVTT} --> ${sub.outTimeVTT}</li><br>`;
+      subtitleList.innerHTML +=
+      `<tr class="each-sub">
+      <td>${sub.text}</td>
+      <td>${sub.inTimeVTT}</td>
+      <td>${sub.outTimeVTT}</td>
+    </tr>
+    `;
     })
   }
 
   listOneSubtitle = (sub, inTimeVTT, outTimeVTT) => {
     // Display subtitle in DOM
-    let subtitleList = document.getElementById('subtitle-list');    
+    let subtitleList = document.getElementById('sub-tbody');    
     // subtitleList.innerHTML += `<li>${sub} || ${inTimeVTT} --> ${outTimeVTT}</li><br>`;
-    subtitleList.innerHTML += `<li>Content: 
-    ${sub}
-    In Time: ${inTimeVTT}
-    Out Time: ${outTimeVTT}
-  </li>`;
+    subtitleList.innerHTML +=
+    `<tr class="each-sub">
+      <td>${sub}</td>
+      <td>${inTimeVTT}</td>
+      <td>${outTimeVTT}</td>
+    </tr>
+    `;
   
     
   }
@@ -198,10 +206,11 @@ class SubtitleCreation extends React.Component {
   render() {
 
     return(
-    <div className="creationSub">
+    <div>
       <div>
          <button id='creation-button' className="btn btn-info" onClick={this.createSub}>In Time</button>
       </div>
+    <div className="creationSub">
           
       {/* Subtitle Modal */}
       {/* <div id="sub-text" className="modal" style={{display:'none'}}> */}
@@ -211,14 +220,14 @@ class SubtitleCreation extends React.Component {
             <textarea id="this-sub-text" rows="2" cols="50" maxLength="80"></textarea>
             <button id="save-text-btn" onClick={this.saveSubtitle}>Save</button>
             <button id="cancel-btn" onClick={this.cancelSubtitle}>Cancel</button>
-        </div>
-      </div>  */}
+            </div>
+          </div>  */}
 
    <div className="modal" id="myModal">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
           <div className="modal-header">
-          <h4 className="modal-title">The text must be shorter than 80 characters...</h4>
+          <h4 className="modal-title">The text must be shorter than 80 characters</h4>
           <button type="button" className="close"  onClick={this.cancelSubtitle} data-dismiss="modal"></button>
           </div>
           <div className="modal-body">
@@ -236,13 +245,27 @@ class SubtitleCreation extends React.Component {
       {/* Subtitle list div */}
       <div>
       <div id='show-subtitles'>
-         <ul id="subtitle-list">
-        </ul>
+        <table id="subtitle-list">
+          <thead>
+            <tr>
+              <th>Text</th>
+              <th>In time</th>
+              <th>Out time</th>
+            </tr>
+          </thead>
+          <tbody id="sub-tbody">
+
+          </tbody>
+        </table>
           
          </div>
+          <button id='download-button' onClick={this.downloadSub} className="btn btn-success">Download subtitles</button>
+
+
     </div>
     <div> 
-    <button id='download-button' onClick={this.downloadSub} className="btn btn-success">Download subtitles</button>
+    
+  </div>
   </div>
   </div>
     );
