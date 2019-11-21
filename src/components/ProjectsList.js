@@ -90,11 +90,11 @@ class ProjectsList extends Component {
                 <h5 className="card-title form_text">Language: {proj.language}</h5>
                             
               <Link to={`/update/${proj._id}`}>
-                <img src="/edit.png" id="Edit"/>
+                <img src="/edit.png" id="Edit" alt="project" />
               </Link>
 
               <Link to={`#`}onClick={this.delete}>
-                <img src="/delete.png" id="Delete"/>
+                <img src="/delete.png" id="Delete" alt="project"/>
               </Link>
               
               {/* <button onClick={this.delete} className="remove-btn btn btn-danger">Delete</button> */}
