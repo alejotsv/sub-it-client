@@ -74,10 +74,10 @@ onChangeLanguage(e) {
   render() {
     return (
         <div style={{ "marginTop": "10%" }}>
-            <h3 align="center">Update Project</h3>
+            <h3 align="center" className="form_title_text">Update Project</h3>
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
-                    <label>Title:  </label>
+                    <label className="form_text">Title:  </label>
                     <input 
                       type="text" 
                       name="title"
@@ -88,7 +88,7 @@ onChangeLanguage(e) {
                       />
                 </div>
                 <div className="form-group">
-                    <label>Genre: </label>
+                    <label className="form_text">Genre: </label>
                     <input type="text" 
                        name="genre"
                       className="form-control"
@@ -98,7 +98,7 @@ onChangeLanguage(e) {
                       />
                 </div>
                 <div className="form-group">
-                    <label>Description: </label>
+                    <label className="form_text">Description: </label>
                     <textarea type="text" 
                       name="description"
                       className="form-control"
@@ -108,7 +108,7 @@ onChangeLanguage(e) {
                       />
                 </div>
                 <div className="form-group">
-                    <label>Language: </label>
+                    <label className="form_text">Language: </label>
                     <input type="text" 
                       name="language"
                       className="form-control"

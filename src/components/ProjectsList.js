@@ -35,6 +35,8 @@ class ProjectsList extends Component {
         .catch(err => console.log(err))
         }
 
+        
+
       
        
   
@@ -73,7 +75,7 @@ class ProjectsList extends Component {
       localStorage.setItem('language', proj.language);
       return (
       
-     <div className="container_dashboard_1" style={{marginTop: "-2%"}} key={proj._id} >
+     <div className="container_dashboard_1" style={{marginTop: "1%"}} key={proj._id} >
         <div className="card" style={{width:200, marginLeft: "4%", marginTop: "4%"}}>
            <Link to={`/project/${proj._id}`} className="btn btn-dark" style={{backgroundColor: "black"}}>See full project</Link>
            <div className="embed-responsive embed-responsive-4by3">
@@ -81,13 +83,13 @@ class ProjectsList extends Component {
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             allowFullScreen  title="1"></iframe>
             </div>
-              <div className="card-body">
-                <h4 className="card-title">{proj.title}</h4>
-                <h5 className="card-title">Genre: {proj.genre}</h5>
-                <h5 className="card-title">Description: {proj.description}</h5>
-                <h5 className="card-title">Language: {proj.language}</h5>
+              <div className="card-body bg-dark">
+                <h4 className="card-title form_title_text">{proj.title}</h4>
+                <h5 className="card-title form_text">Genre: {proj.genre}</h5>
+                <h5 className="card-title form_text">Description: {proj.description}</h5>
+                <h5 className="card-title form_text">Language: {proj.language}</h5>
                             
-              <Link to={`/update`}>
+              <Link to={`/update/${proj._id}`}>
                 <img src="/edit.png" id="Edit"/>
               </Link>
 
@@ -113,11 +115,8 @@ class ProjectsList extends Component {
       return (
              
              <div className="container_profile">
-                 {/* <h2>New project <a href={`/form`}>
-                     
-                  </a></h2>  */}
-                  
-                <div className="flex-container">
+                  {/* {/* <Link className="bg-secondary" to={`/form`}><label className="bg-dark button_text">New Project</label> </Link>                */}
+                  <div className="flex-container"> 
                   
                   {this.renderingElements()}
                 </div>

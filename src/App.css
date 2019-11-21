@@ -45,7 +45,7 @@ ul > li {
       background-size:cover;
       opacity: 0.8;
       position: relative
-    
+      
   }
 
     .flex-container{
@@ -109,6 +109,9 @@ li {
 .card-body > h6{
   color: #B4B4C4;
   font: 18px Raleway, "Open Sans", sans-serif;
+  }
+  .card-title{
+    color: rgb(212, 200, 200)
   }
 footer{
   color: #32325D;

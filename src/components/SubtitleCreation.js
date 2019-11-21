@@ -63,7 +63,7 @@ class SubtitleCreation extends React.Component {
       <td>${sub}</td>
       <td>${inTimeVTT}</td>
       <td>${outTimeVTT}</td>
-    </tr>
+      </tr>
     `;
   
     
