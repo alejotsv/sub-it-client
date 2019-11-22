@@ -8,6 +8,7 @@
     "bulma": "^0.8.0",
     "file-saver": "^2.0.2",
     "file-server": "^2.1.0",
+    "jquery": "^3.4.1",
     "node-sass": "^4.13.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

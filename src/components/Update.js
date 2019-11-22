@@ -23,7 +23,7 @@ export default class Update extends Component {
                 project_title: theTitle, 
                 project_genre: theGenre, 
                 project_description: theDescription, 
-                project_Language: theLanguage, 
+                project_language: theLanguage, 
             })
             this.onChangeTitle = this.onChangeTitle.bind(this);
             this.onChangeGenre = this.onChangeGenre.bind(this);
@@ -31,6 +31,10 @@ export default class Update extends Component {
             this.onChangeLanguage = this.onChangeLanguage.bind(this);
             this.onSubmit = this.onSubmit.bind(this); 
  }
+
+ refreshPage() {
+  window.location.reload(false);
+}
 
  onChangeTitle(e) {
   this.setState({
@@ -66,9 +70,10 @@ onChangeLanguage(e) {
     const idPro = localStorage.getItem('projId')
     axios.put(`${process.env.REACT_APP_API_URL}/project/${idPro}/updateProject`, obj)
         .then(res => console.log(res.data));
-
-    const Id = localStorage.getItem('currentUserId');
+    
+      const Id = localStorage.getItem('currentUserId');
       this.props.history.push(`/dashboard/${Id}`);
+      this.refreshPage()
     }
  
   render() {

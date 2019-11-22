@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import '../ProjectStyles.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 // import ProjectCard from './ProjectCard';
 // import { checkUser } from './UserFunctions'
 
@@ -20,34 +21,37 @@ class ProjectsList extends Component {
         (async () => {
           const response = await axios.get(`${process.env.REACT_APP_API_URL}/dashboard/${TheId}`)
           this.setState({ projects: response.data })
-          // console.log(this.state.projects[0]['title'])
+          
         })()
         
         const Name = localStorage.getItem('currentUserName');
         this.setState({ userName : Name});
   }
 
+  refreshPage() {
+    window.location.reload(false);
+  }
+  
+  refreshUser = res => this.setState({projects: res.data.projects})   
   
   delete = e => {
     const idpro = localStorage.getItem('projId')
     axios.delete(`${process.env.REACT_APP_API_URL}/project/${idpro}/deleteProject`)
-        .then(console.log('Deleted'))
+        .then(response => {
+          console.log(response)
+          this.refreshPage()
+          })
         .catch(err => console.log(err))
         }
 
-        
-
-      
-       
-  
-  renderingElements(){
+   renderingElements(){
     // const uId = localStorage.getItem('currentUserId');
     if(this.state.projects.length === 0){
 
       return (
         <div className="container_dashboard" style={{marginTop: "-2%"}}>
-                <div style={{marginRight: "6%", marginTop: "9%"}}>
-                <div className="card bg-secondary rounded-circle" >
+                <div id="theCard" style={{marginRight: "6%", marginTop: "9%"}}>
+                <div id="card1" className="card bg-secondary rounded-circle" >
                   <div className="card-body text-center">
                     <div className="card bg-secondary rounded-circle" >
                       <div className="card-body text-center">
@@ -97,8 +101,7 @@ class ProjectsList extends Component {
                 <img src="/delete.png" id="Delete" alt="project"/>
               </Link>
               
-              {/* <button onClick={this.delete} className="remove-btn btn btn-danger">Delete</button> */}
-              
+                  
             </div>         
           </div>     
                      
