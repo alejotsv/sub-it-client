@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 
-import Navbar from './components/page-Components/Navbar'
+import Navbar from './components/user-components/LoginClean'
 
 class App extends Component {
   render() {
