@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { register } from './UserFunctions'
 import { login } from './UserFunctions'
 // Components Imported
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 
 class Register extends Component {
   constructor() {
@@ -75,14 +75,6 @@ class Register extends Component {
       <div className="container_register">
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
-
-            <GoogleLogin
-              clientId="346001219914-oi000oqjvspivrfsve98dp9hvjia3s9o.apps.googleusercontent.com"
-              buttonText="Login"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
 
             <form noValidate onSubmit={this.onSubmit}>
               <h1 className="h3 mb-3 font-weight-normal"><span className='form_title_text'>Create an account</span></h1>

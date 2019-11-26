@@ -5,7 +5,7 @@ import { login } from './UserFunctions'
 import { register } from './UserFunctions'
 
 // Components Imported
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 
 class Login extends Component {
   constructor() {
@@ -100,14 +100,6 @@ class Login extends Component {
                   onChange={this.onChange}
                 />
               </div> */}
-
-              <GoogleLogin
-                clientId="346001219914-oi000oqjvspivrfsve98dp9hvjia3s9o.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-              />
 
               <div className="form-group">
                 <label htmlFor="email"><span className='form_text'>Email address</span></label>
